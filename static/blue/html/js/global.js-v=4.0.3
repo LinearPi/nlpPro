@@ -1,0 +1,1521 @@
+// JavaScript Document
+$(function(){
+	/*-------------- 公用替换url ----------------------*/
+	$('.replaceURL').each(function(){
+		var generalURL = 'http://www.gsdata.cn/rank/wxdetail?wxname=';
+		var dataUrl = generalURL + $(this).data('url');
+		$(this).attr('href',dataUrl);
+	});
+	
+	/*-------------- 首页导航选中效果 ----------------------*/
+	$(document).ready(function(){
+		$(".navbar-collapse .nav-first li.active").find("i").remove();
+		$(".navbar-collapse .nav-first li.active").next("li").find("i").remove();
+	});
+	$(function(){
+		$('.dropdownli').hover(function(){
+			$(this).find('ul').show();
+		},function(){
+			$(this).find('ul').hide();
+		});
+	});
+	
+	
+	/*-------------------------------------更多操作点击事件----------------------------------------*/
+	//添加监测方案页面——点击删除监测词
+	$(".keyWord .fa-close").click(function(){
+		$(this).parents("li").hide();
+	});
+	$(".kind a").click(function(){
+		$(this).toggleClass("color_b").siblings("a").removeClass("color_b");
+	})
+
+	//添加监测方案页面——新建监测方案点击一次后，禁用按钮
+	$('http://yuqing.gsdata.cn/themes/blue/html/js/.leftMenu .btn.add').click(function(){
+		$(this).addClass('disabled');
+	});
+
+	//添加监测方案页面——点击联系方式，出现文字
+	$(document).click(function(e){
+		var target = $(e.target);
+		if(target.closest(".creat_info a").length == 0){
+			$(".creat_info span").hide();
+		}
+	});
+	$('.creat_info a').click(function(){
+		$(this).next('span').show();
+	});
+
+	//添加监测方案页面——问号提示
+	$('.creat .fa-question-circle').hover(function(){
+		$(this).parent().next('.key-tip').show();
+	},function(){
+		$('.creat .key-tip').hide();
+	});
+
+	//点击面包屑-下载按钮报告按钮效果
+	$(".crumbs .btn-default").click(function(){
+		if($(this).children(".icon").hasClass("icon-download")){
+			$(this).children(".icon").addClass("icon-download2")
+		}
+		if($(this).children(".icon").hasClass("icon-in")){
+			$(this).children(".icon").addClass("icon-in2")
+		}
+	})
+
+
+	//账号中心-账号详情：点击修改昵称、联系方式
+	//$(".fr.change").click(function(){
+	//    $(this).parent().siblings("p.ensure").show();
+	//});
+	//$(".ensure a").click(function(){
+	//    var inputName = $(this).siblings("input").val()
+	//    if($(".ensure input").val()!= 0){
+	//        $(this).parents("p").siblings(".form-control-static").find("span").text(inputName)
+	//    }
+	//})
+	//账号中心-账号详情：点击修改昵称、联系方式 modify by liumin
+	$(".js-userChange .fr.change").click(function(){
+		$('.js-userChange').each(function(){
+			var acctVal = $(this).find('span').text();
+			$(this).hide().siblings("p.ensure").show().find('input').val(acctVal);
+		})
+	});
+	$(".ensure a.nickedit").click(function(){
+		$(".js-userChange").show();
+		var inputName = $(".nicknameSure").val();
+		var tel = $(".tel").html();
+		var user_name = $(".usernameSure").val();
+		var company_name = $(".companysure").val();
+		if($(".ensure input").val()!= 0){
+			$(this).parents("p").siblings(".form-control-static").find("span").text(inputName);
+			$.ajax({
+				url : SITE.ensureUrl('accountManager/accountSave'),
+				type : 'post',
+				data : {'nickname':inputName,'username':user_name,'company_name':company_name},
+				dataType : 'json',
+				success:function(data){
+					if(data['code']==1){
+						success(data['msg']);
+						window.location.reload();
+					}
+					else{
+						warning(data['msg']);
+					}
+				},
+				error:function(data){error('操作失败');}
+			})
+		}
+		$(".js-userChange").next('p').hide();
+	});
+	$(".ensure a.nickcancel").click(function(){
+		$(".js-userChange").show();
+		$(".js-userChange").next('p').hide();
+	});
+	
+	$(".ensure a.teledit").click(function(){
+		$(".edit1").show();
+		var inputName = $(this).siblings("input").val();
+		var nickname = $(".nickname").html();
+		var company_name = $(".company").html();
+		var tel_format = /^1([38]\d|4[57]|5[0-35-9]|7[06-8]|8[89])\d{8}$/;
+		if($(".ensure input.telsure").val()!= 0){
+			if(!tel_format.test(inputName)){
+				error("请输入正确联系方式！");
+				return false;
+			}else{
+				$(this).parents("p").siblings(".form-control-static").find("span").text(inputName);
+				$.ajax({
+					url : SITE.ensureUrl('accountManager/accountSave'),
+					type : 'post',
+					data : {nickname:nickname,tel:inputName,company_name:company_name},
+					dataType : 'json',
+					success:function(data){
+						if(data['status']==1){
+							success(data['msg']);
+						}
+						else{
+							warning(data['msg']);
+						}
+					},
+					error:function(data){error('操作失败');}
+				})
+			}
+		}
+		$(".telensure").hide();
+	});
+	$(".ensure a.companyedit").click(function(){
+		$(".edit2").show();
+		var inputName = $(this).siblings("input").val();
+		var tel = $(".tel").html();
+		var nickname = $(".nickname").html();
+		if($(".ensure input.companysure").val()!= 0){
+			$(this).parents("p").siblings(".form-control-static").find("span").text(inputName);
+			$.ajax({
+				url : SITE.ensureUrl('accountManager/accountSave'),
+				type : 'post',
+				data : {nickname:nickname,tel:tel,company_name:inputName},
+				dataType : 'json',
+				success:function(data){
+					if(data['status']==1){
+						success(data['msg']);
+					}
+					else{
+						warning(data['msg']);
+					}
+				},
+				error:function(data){error('操作失败');}
+			})
+		}
+		$(".companyensure").hide();
+	});
+	
+	
+	//搜索下拉选中效果
+	$(".sort-dropdown").hover(function() {
+		$(this).parent().addClass("open");
+		$(this).find('ul').show();
+	},function(){
+		$(this).parent().removeClass("open");
+		$(this).find('ul').hide();
+	});
+	
+	$('.dropdown-menu').find('a').click(function(){
+		$('.sort-dropdown').removeClass("open");
+		$('.dropdown-menu').hide();
+		var val = $(this).text();
+		$(this).parents('.dropdown-menu').prev('.dropdown-toggle').find('label').text(val);
+		$(this).addClass('aHver').parent().siblings('li').find('a').removeClass('aHver');
+	});
+	
+	//头部条件搜索点击选中效果
+	$(document).delegate(".teOn:not(.multeOn) a","click",function(){
+		$(this).addClass("aHver").siblings().removeClass("aHver");
+	});
+	
+	$(document).delegate(".multeOn a","click",function(){
+		var _this = $(this);
+		if(_this.data('rel')=='china'){
+			_this.addClass("aHver").siblings().removeClass("aHver")
+		}else if(_this.hasClass('more')){
+			_this.parent().toggleClass('multeOnShow');
+		}else{
+			$(".multeOn .fl a").first().removeClass("aHver");
+			_this.toggleClass("aHver");
+		}
+		
+	});
+
+	//点击出现自定义时间筛选
+	$(document).delegate(".cusTime","click",function(){
+		$(this).parent().siblings(".custom").toggle();
+		$(this).addClass("aHver").siblings("a").removeClass("aHver")
+	})
+
+	//舆情监测---传播分析页面：点击筛选表格类型
+	$(".echarTabs .nav-pills li").click(function(){
+		$(this).addClass("active").siblings("li").removeClass("active")
+	})
+
+	//舆情报告--头部tab
+	$(".report li").click(function(){
+		$(this).addClass("active").siblings("li").removeClass("active");
+	})
+
+
+	/*------------- 信息汇总--表格列表点击全选 --------------*/
+
+	//选中全部
+	function selectAll(selObj,tbObj){
+		if($(selObj).attr("checked")=="checked"){
+			$(selObj).prop('checked', false);
+			$(selObj).removeAttr("checked");
+			$(tbObj).find("input").prop('checked', false);
+			$(tbObj).find("input").removeAttr('checked');
+		}else{
+			$(selObj).prop('checked', true);
+			$(selObj).attr("checked","checked");
+			$(tbObj).find("input").prop('checked', true);
+			$(tbObj).find("input").attr("checked","checked");
+		}
+	}
+	
+	
+	$("#selectAll").click(function(){
+		selectAll("#selectAll",".ternTb");
+		isSelect();
+	});
+	$("#rtSelAll").click(function(){
+		selectAll("#rtSelAll",".rtTab td");
+		
+	});
+	//文章页问号提示
+	$('.emotion .fa-question-circle').hover(function(){
+		$('.emotion .iTips').show();
+	},function(){
+		$('.emotion .iTips').hide();
+	});
+
+	$('.seach-dropdown .dropdown-menu a').on('click',function(){
+		$(this).addClass('aHver').parent('li').siblings().find('a').removeClass('aHver');
+		$(this).parents('.seach-dropdown').find('label').text($(this).text());
+	});
+	/*------------- 舆情报告页面--点击编辑、保存报告--------------*/
+	$(document).ready(function(e) {
+		//点击‘编辑按钮’
+		$("#edit").click(function(){
+                        $(this).attr('data-type',2);
+			$(".substance").each(function() {
+				//出现头部checkbox选择框
+				// $(this).find(".check_label .chose,.operate").show();
+				$(".change_txt span").hide();
+				$(".substance .change_txt").each(function(){
+					//实现文本编辑
+					$(this).children("textarea").show();
+					var spanText = $(this).children("span").html();
+					$(this).children("textarea").val(spanText)
+				})
+				//表格内部删除
+				$(".operate a").click(function(){
+					$(this).parents("tr").remove();
+				});
+			});
+			//勾选子选项，父辈checkbox自动选中
+			$("p.col-md-11 .chose").click(function(){
+				if($(this).attr("checked","checked")){
+					$(this).parents(".col-md-12").siblings("h3").find(".chose").attr("checked","checked");
+				}else{
+					$(this).parents(".col-md-12").siblings("h3").find(".chose").removeAttr('checked');
+				}
+			});
+			//点击‘保存’按钮
+			//$("#keep").click(function(){
+			//	//保存文本编辑后的内容
+			//	$(".substance .change_txt").each(function(){
+			//		var textareaText = $(this).children("textarea").val();
+			//		$(this).children("span").html(textareaText);
+			//		$(this).children("textarea").hide();
+			//	});
+			//checkbox、表格内删除按钮 消失
+			//$(".change_txt span").show();
+			//$(this).find(".operate").hide();
+			//未勾选选项消失
+			/* $(".check_label input[type='checkbox']").each(function() {
+			if($(this).is(':checked')){
+			$(this).parent(".check_label").parent().parent().show();
+			$(this).hide()
+			}else{
+			$(this).parent(".check_label").parent().parent().remove();
+			$(this).hide()
+			}
+			});
+			$(".col-md-11  input[type='checkbox']").each(function() {
+			if($(this).is(':checked')){
+			$(this).parent().parent().show();
+			$(this).parent().parent().parent().show();
+			$(this).hide()
+			}else{
+			$(this).parent().parent().hide();
+			$(this).parent().parent().parent().remove();
+			$(this).hide()
+			}
+			}); */
+			//});
+		});
+
+	});
+
+
+	//单个删除
+	$('.oprateTD .singleDelete').click(function(){
+		var obj = $(this);
+		var string = '您确定要删除所选的内容吗？';
+		$('.conformPra').html(string);
+		$('.alertBox').removeClass('hide').addClass('single_delete');
+		$('.single_delete .conformBtn').click(function(){
+			obj.parents("tr").remove();
+			$('.menBan').addClass('hide');
+			$('.alertBox').addClass('hide');
+		})
+		$('.single_delete .cancleBtn').click(function(){
+			$('.menBan').addClass('hide');
+			$('.alertBox').addClass('hide');
+			$(this).parents('.alertBox').removeClass('single_delete');
+		})
+	})
+
+	//单个修改状态
+	$('.oprateTD .singleStartTop').click(function(){
+		var obj = $(this);
+		if($(this).html()=='启用'){
+			statuesValue = '停用';
+			var string = '您确定要改为停用状态吗？';
+		}else{
+			statuesValue = '启用';
+			var string = '您确定要改为启用状态吗？';
+		}
+		$('.conformPra').html(string);
+		$('.alertBox').removeClass('hide').addClass('single_startStop');
+		$('.single_startStop .conformBtn').click(function(){
+			obj.html(statuesValue);
+			$('.menBan').addClass('hide');
+			$('.alertBox').addClass('hide');
+		})
+		$('.single_delete .cancleBtn').click(function(){
+			$('.menBan').addClass('hide');
+			$('.alertBox').addClass('hide');
+			$(this).parents('.alertBox').removeClass('single_startStop');
+		})
+	})
+
+
+
+
+	//批量停用
+	$('.pl-stop').click(function(){
+		if(howMuch()<=0){
+			var string = '请勾选您所需要操作的内容';
+			$('.conformPra').html(string);
+			$('.menBan').removeClass('hide');
+			$('.alertBox').removeClass('hide').addClass('wrongMsg');
+			$('.wrongMsg .conformBtn').click(function(){
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+			})
+			return;
+		}else{
+			var string = '您确定要启用所选的内容吗？';
+			$('.menBan').removeClass('hide');
+			$('.conformPra').html(string);
+			$('.alertBox').removeClass('hide').addClass('pl_stop');
+			$('.pl_stop .conformBtn').click(function(){
+				updataStop();
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+			})
+			$('.pl_stop .cancleBtn').click(function(){
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+				$(this).parents('.alertBox').removeClass('pl_stop');
+			})
+
+		}
+	});
+
+	//批量启用
+	$('.pl-start').click(function(){
+		if(howMuch()<=0){
+			var string = '请勾选您所需要操作的内容';
+			$('.conformPra').html(string);
+			$('.menBan').removeClass('hide');
+			$('.alertBox').removeClass('hide').addClass('wrongMsg');
+			$('.wrongMsg .conformBtn').click(function(){
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+			})
+			return;
+		}else{
+			var string = '您确定要启用所选的内容吗？';
+			$('.menBan').removeClass('hide');
+			$('.conformPra').html(string);
+			$('.alertBox').removeClass('hide').addClass('pl_start');
+			$('.pl_start .conformBtn').click(function(){
+				updataStart();
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+			})
+			$('.pl_start .cancleBtn').click(function(){
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+				$(this).parents('.alertBox').removeClass('pl_start');
+			})
+
+		}
+	});
+
+
+
+	//批量删除
+	$('.pl-delete').click(function(){
+		if(howMuch()<=0){
+			var string = '请勾选您所需要操作的内容';
+			$('.conformPra').html(string);
+			$('.menBan').removeClass('hide');
+			$('.alertBox').removeClass('hide').addClass('wrongMsg');
+			$('.wrongMsg .conformBtn').click(function(){
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+			})
+			return;
+		}else{
+			var string = '您确定要删除、启用当前所选的内容吗？';
+			$('.menBan').removeClass('hide');
+			$('.conformPra').html(string);
+			$('.alertBox').removeClass('hide').addClass('pl_delete');
+			$('.pl_delete .conformBtn').click(function(){
+				deleteInput();
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+			})
+			$('.pl_delete .cancleBtn').click(function(){
+				$('.menBan').addClass('hide');
+				$('.alertBox').addClass('hide');
+				$(this).parents('.alertBox').removeClass('pl_delete');
+			})
+
+		}
+	});
+
+	//计算有多少个被选中
+	function howMuch(){
+		var allCheckbox = $('.rtTab').find('input').length - 1;
+		var thisIndex = 0;
+		for(var i=1;i<=allCheckbox;i++){
+			if($('.rtTab').find('input').eq(i).attr('checked')=='checked'){
+				thisIndex++;
+			}
+		}
+		return thisIndex;
+	}
+
+	//批量删除
+	function deleteInput(){
+		var allCheckbox = $('.rtTab').find('input').length - 1;
+		for(var i=allCheckbox;i>=1;i--){
+			if($('.rtTab').find('input').eq(i).attr('checked')=='checked'){
+				$('.rtTab').find('input').eq(i).parents('tr').remove();
+			}
+		}
+	}
+	//批量启用
+	function updataStart(){
+		var allCheckbox = $('.rtTab').find('input').length - 1;
+		for(var i = allCheckbox;i>=1;i--){
+			if($('.rtTab').find('input').eq(i).attr('checked')=='checked'){
+				$('.rtTab').find('input').eq(i).parent('td').siblings('td.oprateTD').children(".singleStartTop").html('启用');
+			}
+		}
+	}
+	//批量启用
+	function updataStop(){
+		var allCheckbox = $('.rtTab').find('input').length - 1;
+		for(var i = allCheckbox;i>=1;i--){
+			if($('.rtTab').find('input').eq(i).attr('checked')=='checked'){
+				$('.rtTab').find('input').eq(i).parent('td').siblings('td.oprateTD').children(".singleStartTop").html('停用');
+			}
+		}
+	}
+
+	//批量修改时间
+	function changeTime(time){
+		var allCheckbox = $('.rtTab').find('input').length - 1;
+		for(var i = allCheckbox;i>=1;i--){
+			if($('.rtTab').find('input').eq(i).attr('checked')=='checked'){
+				$('.rtTab').find('input').eq(i).parent('td').siblings('td.changeTime').html(time);
+			}
+		}
+	}
+
+
+	/*----------------------------------添加标签(杜文军)-------------------------------------*/
+	// 2016-01-31 jxm 需要形式为post
+	$('#add-tag').click(function(){
+		var d=$('#new-tag');
+		if (!d.val()) {
+			d.focus();
+			return false;
+		}
+		var url=SITE.ensureUrl('tags/add');
+		$.ajax({
+			type:'post',
+			url:url,
+			data:'new_tag='+d.val(),
+			dataType:'json',
+			success:function(data){
+				if(data['status']==1){
+					// 成功
+					d.val('');
+					$("#tags").html($.templates("#tag-tpl").render(data['list']));
+					success(data['msg']);
+				}
+				else{
+					warning(data['msg']);
+				}
+			},
+			error:function(data){return 0;}
+		});
+	});
+
+	/*----------------------------------舆情评估(杜文军)-------------------------------------*/
+	$("#evaluate").bind('click',function() {
+		var evaluate_content = $("#evaluate_content").val();
+		if(!evaluate_content) {
+			warning("评估内容不能为空！");
+			return false;
+		}
+		var news_id = $("#news_id").val();
+		if(!news_id)
+		{
+			warning("文章索引不能为空！");
+			return false;
+		}
+		var news_title = $("#news_title").val();
+		if(!news_title)
+		{
+			warning("文章标题不能为空！");
+			return false;
+		}
+		var news_from = $("#news_from").val();
+		if(!news_from)
+		{
+			warning("文章来源不能为空！");
+			return false;
+		}
+		var tags = [];
+		$(".tag_name").each(function() {
+			if($(this).is(':checked')==true)
+			{
+				tags.push($(this).val());
+			}
+		});
+
+		if(tags!=''){
+			var url=SITE.ensureUrl('news/evaluate');
+			$.post(url,{evaluate_content:evaluate_content,"tags[]":tags,news_id:news_id,news_from:news_from,news_title:news_title},function(res) {
+				if(res.error == 0) {
+					success("舆情评论成功");
+					// 加载当前页面
+					setTimeout(Reload,2000);
+				}else {
+					error(res.error_msg);
+				}
+			},'json');
+		}
+		else{
+			warning("必须选择标签分类！");
+			return false;
+		}
+	});
+
+
+
+	/*********************** @authur jxm *******************/
+	//	预警关键词  预警提示用户   点击  右侧切换
+	$("a.keywords_management").click(function(){
+		$("a.words").removeClass("yc");
+		$("http://yuqing.gsdata.cn/themes/blue/html/js/a.user").addClass("yc");
+	})
+	$("a.tip_setting").click(function(){
+		$("a.words").addClass("yc");
+		$("http://yuqing.gsdata.cn/themes/blue/html/js/a.user").removeClass("yc");
+	})
+
+
+	//‘添加监测事件页面’ 输入关键词点击‘确认’添加关键词
+	//	$(".add_a").click(function(){
+	//		var li_length = $('.terms ul li').length;
+	//		var k1 =$(".keyWord").val();
+	//		if(k1 == ''){
+	//			warning('请填写关键字');
+	//			return false;
+	//		}
+	//
+	//                while(k1.lastIndexOf(" ")>=0){
+	//                  k1 = k1.replace(" ","");
+	//                }
+	//                if(k1.length == 0){
+	//                    warning('请填写关键字');
+	//                    return false;
+	//                }
+	//
+	//		if(li_length > 9){
+	//			warning('关键字最多填写10个');
+	//			$(".keyWord").val("");
+	//			return false;
+	//		}
+	//		if(k1.length >10){
+	//			warning('关键字字符长度不能大于10');
+	//			return false;
+	//		}
+	//                var str = '<li class="keyword_name">'+k1+'</li>';
+	//		$(".terms").show().children("ul").append(str);
+	//		$(".keyWord").val("");
+	//	})
+
+	//头部点击筛选搜索条件
+	$(".input-group-btn .dropdown-menu li a").click(function(){
+		var liText = $(this).text();
+		$(this).parents(".dropdown-menu").siblings(".btn").find(".btnTxt").text(liText);
+	})
+
+	/*------------------ 弹框 -------------------*/
+	//点击切换舆情发送方式
+	$(".tab-choose .nav-tabs li").click(function(){
+		var tabList = $(this).index();
+		$(this).addClass("active").siblings("li").removeClass("active");
+		$(".message-content").eq(tabList).show().siblings(".message-content").hide();
+
+	})
+	
+	$('.js-advanceSearch').on('click',function(){
+		$(this).toggleClass('on');
+		$('.advancedSeach').slideToggle("200");
+	});
+});
+
+//网页正文加入排除词
+$(function(){
+	$(".news_content,.ternTb .rwn,.ternTb .conTt").mouseup(function (e) {
+		var x = 25;
+		var y = 20;
+		var text = "";
+		if (document.selection) {
+			text = document.selection.createRange().text;
+		}
+		else if (window.getSelection()) {
+			text = window.getSelection();
+		}
+		
+		if (text!= "") {
+			var tip = "加入排除词";
+			text = $.trim(text);
+			var tooltip = "<div id='aTip' class='tooltip'><a onclick=doit('"+text+"')>" + tip + "</a></div>";
+			$("body").append(tooltip);
+			$("#aTip").css({
+			"top": (e.pageY + y) + "px",
+			"left": (e.pageX - x) + "px"
+			}).show("fast");
+		}
+	}).mousedown(function () {
+		$("#aTip").remove();
+	});
+});
+
+function checkval(t) {
+	var re = /^[\u4e00-\u9fa5a-zA-Z0-9]+$/gi;
+	if (re.test(t)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function doit(text) {
+	$("#aTip").remove();
+	if (text.length < 2) {
+		warning('排除词至少2个字符');
+		return false;
+	}else if(text.length > 20){
+		warning('排除词最多20个字符');
+		return false;
+	}else{
+		if(checkval(text)){
+			//当前的方案id
+			var scheme_id=$("input[name=scheme_id]").val();
+			$.ajax({
+				type: 'post',
+				url:  SITE.ensureUrl('yuqingNews/addExcludeKeyword'),
+				data: {'sid':scheme_id,'exclude_keyword':text},
+				async: true,
+				dataType: 'json',
+				success: function (res)
+				{
+					if(res.code=='1')
+					{
+						success(res.msg);
+					}else
+					{
+						error(res.msg);
+					}
+				}
+			});
+		}else{
+			warning('排除词不能包含特殊字符');
+			return false;
+		}
+
+	}
+}
+/*----------------------------------自定义弹框(张坤)  2015年9月9日  2015年9月9日16:06:48-------------------------------------*/
+function success(msg){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/successImg.png">' +
+						'<i class="success-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:void(0);" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0)" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+};
+//success('恭喜您，当前操作成功！');
+
+function successDisappear(msg){
+	var str = '<div class="designAlert successDisappear" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/successImg.png">' +
+						'<i class="success-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>'+
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+	$('.successDisappear').delay(1000).fadeOut(400).queue (function (){
+		$(this).remove();
+	});;
+};
+//successDisappear('恭喜您，当前操作成功！2秒后提示框消失');
+
+//error('对不起，当前操作错误！');
+function error(msg) {
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/errorImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/errorImg.png*/ />' +
+						'<i class="error-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:void(0);" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0)" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+};
+
+//errorDisappear('对不起，当前操作错误！2秒后提示框消失');
+function errorDisappear(msg){
+	var str = '<div class="designAlert successDisappear" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<div class="clr insideInfo">' +
+					//	'<img src="' + CONFIG.theme_base_url + '/images/errorImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/errorImg.png*/ />' +
+						'<i class="error-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+	$('.successDisappear').delay(2000).fadeOut(400).queue (function (){
+		$(this).remove();
+	});;
+};
+
+
+//warning('警告，当前操作存在问题！');
+function warning(msg){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+						'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:void(0);" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0)" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+}
+//confirming('选择！',url);
+function confirming(msg,url){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+						'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="' + url + '" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0)" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+}
+
+
+// 选择  点击 触动方法  jxm 2016/01/14
+//confirming('提示语！',完整方法名称());
+function confirming_function(msg,functionName,functionNameAll){
+	if(functionNameAll){
+		var str = '<div class="designAlert" id="warnAlert">' + 
+			'<div class="alertBox my-alertBox">' +
+				'<div class="clearfix insideTit">' +
+					'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+					'<span>提示</span>' +
+				'</div>' +
+				'<div class="insideBox">' +
+					'<div class="confirmInside">' +
+						'<div class="clr insideInfo">' +
+							//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+							'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+						'</div>' +
+						'<div class="clr myAlert">' +
+							'<a href="JavaScript:' + functionName + '" class="conformBtnSingle">删除单条</a>' +
+							'<a href="JavaScript:' + functionNameAll +'" class="conformBtnAll">删除全部及相似</a>' +
+							'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+			'<div class="menBan clr"></div>' +
+		'</div>';
+	}else{
+		var str = '<div class="designAlert" id="warnAlert">' + 
+			'<div class="alertBox my-alertBox">' +
+				'<div class="clearfix insideTit">' +
+					'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+					'<span>提示</span>' +
+				'</div>' +
+				'<div class="insideBox">' +
+					'<div class="confirmInside">' +
+						'<div class="clr insideInfo">' +
+							//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+							'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+						'</div>' +
+						'<div class="clr myAlert">' +
+							'<a href="JavaScript:' + functionName + '" class="conformBtn">确定</a>' +
+							'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+			'<div class="menBan clr"></div>' +
+		'</div>';
+	}
+	
+
+	$('body').append(str);
+}
+
+// 选择  点击 触动方法  jxm 2016/01/14
+//confirming('提示语！',完整方法名称());
+function confirming_function_1(msg,functionName){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+						'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:' + functionName + '" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+}
+
+//操作成功！ 跳转  jxm 2016/01/14
+function successUrl(msg,url){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/successImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/successImg.png*/ />' +
+						'<i class="success-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="' + url + '" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+}
+
+//情感属性选择
+function emotion_confirming(msg,functionName1,functionName2,functionName3){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+						'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:' + functionName1 + '" class="conformBtn attribute">负面</a>' +
+						'<a href="JavaScript:' + functionName2 + '" class="conformBtn attribute">中性</a>' +
+						'<a href="JavaScript:' + functionName3 + '" class="conformBtn attribute">正面</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+}
+
+//警告 跳转  jxm 2016/01/30
+function warningUrl(msg,url){
+	var str = '<div class="designAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>提示</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="confirmInside">' +
+					'<div class="clr insideInfo">' +
+						//'<img src="' + CONFIG.theme_base_url + '/images/warmingImg.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png*/ />' +
+						'<i class="warning-img"></i><span class="' + (msg.length > 22? "msgMore":"") + '">' + msg + '</span>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="' + url + '" class="conformBtn">确定</a>' +
+						'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+}
+
+//支付弹框 2016/01/30
+function payUrl(sid,sd_time,salenum){
+	if(salenum==undefined){
+		salenum = 1;
+	}
+	var str = '<div class="designAlert payAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>方案对比支付</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="compareInside">' +
+				'<p style="color:red;text-align:center;margin-bottom:10px">免费次数已用完，请购买方案对比次数，<br/>8.8元/次，多买有折扣或者联系客服升级为大客户</p>' +
+					'<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column lt44">' +
+							'<span>支付方式：</span>' +
+						'</div>' +
+						'<div class="upgrade-column">' +
+						   '<p class="pay_method">' +
+								'<a class="inbk payment-method mr35 js_select_payment active" data-payment="alipay" data-rel="1">' +
+									'<img src="' + CONFIG.theme_base_url + '/images/ali_pay.png" width="88" height="30" alt="支付宝付款">' +
+								'</a>' +
+								'<a class="inbk payment-method js_select_payment" data-payment="wxpay" data-rel="2">' +
+								   '<img src="' + CONFIG.theme_base_url + '/images/weixin_pay.png" width="111" height="33" alt="微信付款">' +
+								'</a>' +
+							'</p>' +
+						'</div>' +
+					'</div>' +
+					'<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column">' +
+							'<span>支付金额：</span>' +
+						'</div>' +
+						'<div class="upgrade-column left-column">' +
+						    '<p class="pay_price">'+
+								'<a class="inbk payment-price js_select_payment active"><label><s>原8.8元/次</s></label>现价'+(8.8*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>原88元/10次</s></label>现价'+(88*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>原440元/50次</s></label>现价'+(431.2*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>原880元/100次</s></label>现价'+(836*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>原1760元/200次</s></label>现价'+(1672*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>原4400元/500次</s></label>现价'+(3960*salenum).toFixed(2)+'元</a>'+
+							'</p>' +
+						'</div>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:void(0);"  id="saveOrder" data-sid="'+sid+'" >确定</a>' +
+						'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+        $(document).off('click','#saveOrder'); //初始化去除委托事件，防止叉掉支付弹窗在支付，出现的
+	var pay_method_compare = 1 ;
+        var pay_compare_flag = true;
+	// 支付方式选择
+	$(document).on('click', '.js_select_payment', function() {
+		var $this = $(this);
+		 $this.addClass('active').siblings().removeClass('active');
+	});       
+        // 支付方式选择
+	$(document).on('click', '#saveOrder', function() {
+                pay_method_compare =$('.pay_method .active').attr('data-rel');
+                var buy_type =  $('.pay_price .payment-price').index($('.pay_price .active'));
+				var _this = $(this);
+                if(!pay_compare_flag){  //只能单次提交
+                    return false;
+                }
+                pay_compare_flag = false;
+             //支付方式   ，  方案id     购买描述   ，购买类型
+            	var post_data = {pay_method:pay_method_compare,str_sid:sid,buy_type:buy_type,sd_time:sd_time};
+                $.ajax({
+                        url : '/yuqingCompare/saveOrder',
+                        type : 'post',
+                        async: true,
+                        data : post_data,
+                        dataType : 'json',
+                        success : function(res) {
+                                if(res.code=='1'){
+                                        //订单生成成功
+                                        payRequest_1(res.data.sn,res.data.pay_method);
+                                          pay_compare_flag = true;
+										_this.closest(".designAlert").remove();
+                                }else{
+                                        error(res.msg);
+                                          pay_compare_flag = true;
+                                }
+                        },
+                        error:function(res)
+                        {
+                                error('支付请求失败！');
+                                pay_compare_flag = true;
+                        }
+                });
+	});
+}
+
+// 简报生成支付弹框 2017/06/02
+function payBriefdoc(sid,money,info,salenum){
+	if(salenum==undefined){
+		salenum = 1;
+	}
+	var str = '<div class="designAlert payAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>生成简报支付</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="compareInside">' +
+					'<p style="color:red;text-align:center;margin-bottom:10px">免费次数已用完，请购买简报次数，<br/>8.8元/次，多买有折扣或者联系客服升级为大客户</p>' +
+                                    '<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column lt44">' +
+							'<span>支付方式：</span>' +
+						'</div>' +
+						'<div class="upgrade-column">' +
+						   '<p class="pay_method">' +
+								'<a class="inbk payment-method mr35 js_select_payment active" data-payment="alipay" data-rel="1">' +
+									'<img src="' + CONFIG.theme_base_url + '/images/ali_pay.png" width="88" height="30" alt="支付宝付款">' +
+								'</a>' +
+								'<a class="inbk payment-method js_select_payment" data-payment="wxpay" data-rel="2">' +
+								   '<img src="' + CONFIG.theme_base_url + '/images/weixin_pay.png" width="111" height="33" alt="微信付款">' +
+								'</a>' +
+							'</p>' +
+						'</div>' +
+					'</div>' +
+					'<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column">' +
+							'<span>支付金额：</span>' +
+						'</div>' +
+						'<div class="upgrade-column left-column">' +
+						    '<p class="pay_price">'+
+								'<a class="inbk payment-price js_select_payment active"><label><s>8.8元/次</s></label>现价'+(8.8*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>88元/10次</s></label>现价'+(88*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>440元/50次</s></label>现价'+(431.2*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>880元/100次</s></label>现价'+(836*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>1760元/200次</s></label>现价'+(1672*salenum).toFixed(2)+'元</a>'+
+								'<a class="inbk payment-price js_select_payment"><label><s>4400元/500次</s></label>现价'+(3960*salenum).toFixed(2)+'元</a>'+
+							'</p>' +
+						'</div>' +
+					'</div>' +
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:void(0);"  id="saveBriefdocOrder" data-sid="'+sid+'" >确定</a>' +
+						'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+	var pay_method_compare = 1 ;
+        var pay_jianbao_flag = true;
+        $(document).off('click','#saveBriefdocOrder'); //初始化去除委托事件
+	// 支付方式选择
+	$(document).on('click', '.js_select_payment', function() {
+		var $this = $(this);
+		$this.addClass('active').siblings().removeClass('active');
+	});
+        
+    // 支付方式选择
+	$(document).on('click', '#saveBriefdocOrder', function(){
+            pay_method_compare =$('.pay_method .active').attr('data-rel');
+            var buy_type =  $('.pay_price .payment-price').index($('.pay_price .active'));
+            var _this = $(this);
+            if(!pay_jianbao_flag){
+                return false;
+            }
+            pay_jianbao_flag = false;
+		var post_data = {pay_method:pay_method_compare,info:info,'buy_type':buy_type};
+                $.ajax({
+                    url : '/yuqingBriefdoc/saveOrder',
+                    type : 'post',
+                    async: true,
+                    data : post_data,
+                    dataType : 'json',
+                    success : function(res) {
+                        if(res.code=='1'){
+                            //订单生成成功
+                            payRequest_jianbao(res.data.sn,res.data.pay_method);
+                            pay_jianbao_flag = true;
+                            _this.closest(".designAlert").remove();
+                        }else{
+                            error(res.msg);
+                            pay_jianbao_flag = true;
+                        }
+                    },
+                    error:function(res){      
+                        error('支付请求失败！');
+                        pay_jianbao_flag = true;
+                    }
+                });
+	});
+}
+//支付弹框 2017/8/16  sale_num当前优惠折扣
+function payUrlBack(estimate_num,sale_num){
+	if(sale_num==undefined){
+		sale_num = 1;
+	}
+	var str = '<div class="designAlert payAlert" id="warnAlert">' + 
+		'<div class="alertBox my-alertBox">' +
+			'<div class="clearfix insideTit">' +
+				'<bottom class="r alert_close"><span>&times;</span></bottom>' +
+				'<span>回溯分析支付</span>' +
+			'</div>' +
+			'<div class="insideBox">' +
+				'<div class="compareInside">' +
+				'<p style="color:red;text-align:center;margin-bottom:10px">回溯分析预估费用=0.01元*预估条数</p>' +
+					'<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column">' +
+							'<span>预估数据：</span>' +
+						'</div>' +
+						'<div class="upgrade-column">' +
+						   '<p>' + estimate_num + '条</p>' +
+						'</div>' +
+					'</div>' +
+					'<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column">' +
+							'<span>预估金额：</span>' +
+						'</div>' +
+						'<div class="upgrade-column">' +
+						   '<p>' + (estimate_num*0.01*sale_num).toFixed(2) + '元</p>' +
+						'</div>' +
+					'</div>' +
+					'<div class="upgrade-row">' +
+					   '<div class="upgrade-column left-column lt44">' +
+							'<span>支付方式：</span>' +
+						'</div>' +
+						'<div class="upgrade-column">' +
+						   '<p class="pay_method">' +
+								'<a class="inbk payment-method mr35 js_select_payment active" data-payment="alipay" data-rel="1">' +
+									'<img src="' + CONFIG.theme_base_url + '/images/ali_pay.png" width="88" height="30" alt="支付宝付款">' +
+								'</a>' +
+								'<a class="inbk payment-method js_select_payment" data-payment="wxpay" data-rel="2">' +
+								   '<img src="' + CONFIG.theme_base_url + '/images/weixin_pay.png" width="111" height="33" alt="微信付款">' +
+								'</a>' +
+							'</p>' +
+						'</div>' +
+					'</div>' +
+					
+					'<div class="clr myAlert">' +
+						'<a href="JavaScript:void(0);"  id="saveOrder" data-sid="" >确定</a>' +
+						'<a href="JavaScript:void(0);" class="conformBtn">取消</a>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'<div class="menBan clr"></div>' +
+	'</div>';
+
+	$('body').append(str);
+    $(document).off('click','#saveOrder'); //初始化去除委托事件，防止叉掉支付弹窗在支付，出现的
+	var pay_method_compare = 1 ;
+        var pay_compare_flag = true;
+	// 支付方式选择
+	$(document).on('click', '.js_select_payment', function() {
+		var $this = $(this);
+		 $this.addClass('active').siblings().removeClass('active');
+	});       
+        // 支付方式选择
+	$(document).on('click', '#saveOrder', function() {
+                pay_method_compare =$('.pay_method .active').attr('data-rel');
+                var buy_type =  $('.pay_price .payment-price').index($('.pay_price .active'));
+				var _this = $(this);
+                if(!pay_compare_flag){  //只能单次提交
+                    return false;
+                }
+                pay_compare_flag = false;
+                var total_money = (estimate_num*0.01*sale_num).toFixed(2);
+             //支付方式   ，  方案id     购买描述   ，购买类型
+       
+            	var post_data = {
+            		add_type:add_type,scheme_type:scheme_type,scheme_name:scheme_name,begin_time:begin_time,end_time:end_time,keywords_one:keywords_one,
+                    keywords_two:keywords_two,keywords_pre:keywords_pre,keywords_exclude:keywords_exclude,
+                    pay_method:pay_method_compare,buy_num:estimate_num,total_money:total_money
+                };
+                console.log(post_data)
+                $.ajax({
+                        url : '/payMent/saveOrder',
+                        type : 'post',
+                        async: true,
+                        data : post_data,
+                        dataType : 'json',
+                        success : function(res) {
+                                if(res.code=='1'){
+                                        //订单生成成功
+                                        payRequest_schemeback(res.data.sn,res.data.pay_method);
+                                          pay_compare_flag = true;
+										_this.closest(".designAlert").remove();
+                                }else{
+                                        error(res.msg);
+                                          pay_compare_flag = true;
+                                }
+                        },
+                        error:function(res)
+                        {
+                                error('支付请求失败！');
+                                pay_compare_flag = true;
+                        }
+                });
+	});
+}
+
+// .myAlert a, 
+$(document).on('click', '.designAlert .menBan,.designAlert .conformBtn, .alert_close', function() {
+	$(this).closest(".designAlert").remove();
+	if($('div').hasClass('specialModal')){
+		$('.modal .btn-primary').removeClass('disabled');
+	}
+});
+
+
+function letDivCenter(id){
+	$("#pop_background").css( { height : $(document).height() } ).fadeTo(300,0.7)
+	var top = ($(window).height() - $(id).height())/2;
+	var left = ($(window).width() - $(id).width())/2;
+	var scrollTop = $(document).scrollTop();
+	var scrollLeft = $(document).scrollLeft();
+	$(id).css( { position : 'absolute', 'top' : top + scrollTop, left : left + scrollLeft } ).show();
+}
+
+function pop_close(id){
+	$("#pop_background,"+id).hide();
+}
+
+// 重新加载当前页面
+function Reload(){
+	location.reload();
+}
+
+//删帖分析_被删文章--- 点击加载更多
+function getDelArticleData(){
+		$.ajax({
+			type: 'get',
+			url:  '',
+			data: {'sid':scheme_id,'type':req_type,'num':5},
+			async: false,
+			dataType: 'json',
+			beforeSend:function(){
+				$('.loading').removeClass('hide');
+				$('#delAtcMore').hide();
+			},
+			success: function (res) {
+				$('.loading').addClass('hide');
+				totalCount=res.count;
+				if(res.count >0) {
+					var length = res.len;
+					if(length > 0){
+						for(var i=0;i<length;i++){
+							html += '<tr><td class="delArtPic vertical_top"><img src="images/delAtc-img.jpg"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/images/delAtc-img.jpg*//></td><td><div class="tdCon"><div class="conTt"><a class="tt" href="#">一个5G编码刷爆朋友圈，中国离拿下5G时代霸主地位还有多远？</a></div><div class="tdInfo"><a class="dflink" href="javascript:void(0)"><i class="fa fa-wechat"></i>腾讯科技</a><span>头条</span><span>阅读数：3861</span></div><p class="tdInfo">删文原因：发布者自行删除</p><div class="tdInfo tdDate"><span>2016-11-17发布</span><span>2016-11-21删除</span></div></div></td></tr>';
+						}
+						$('#delArtcTb').append(html);
+						$('#delAtcMore').show();
+					}else {
+						$('#delAtcMore').addClass('delAccMore').text('全部加载完毕');
+					}
+				}else{
+					$('#delAtcMore').addClass('delAccMore').text('全部加载完毕');
+				}
+			},
+			error: function (res)
+			{	
+				$('.loading').addClass('hide');
+				$("#delArtcTb").after("<div class='loading'><span class='getdataImg'></span></div>");
+				$('#delAtcMore').show();
+			}
+		});
+	}
+
+$("#delAtcMore").on('click',function(){
+	getDelArticleData();
+});
+
+//删帖分析_被删账号--- 点击加载更多
+function getDelAccountData(){
+		$.ajax({
+			type: 'get',
+			url:  '',
+			data: {'sid':scheme_id,'type':req_type,'num':5},
+			async: false,
+			dataType: 'json',
+			beforeSend:function(){
+				$('.loading').removeClass('hide');
+				$('#delAtcMore').hide();
+			},
+			success: function (res) {
+				$('.loading').addClass('hide');
+				totalCount=res.count;
+				if(res.count >0) {
+					var length = res.len;
+					if(length > 0){
+						for(var i=0;i<length;i++){
+							html += '<tr><td class="delAccPic vertical_top"><img src="images/delaccout-img.png"/*tpa=http://yuqing.gsdata.cn/themes/blue/html/js/images/delaccout-img.png*//></td><td><div class="fr delNum">删文：<span class="blue"><strong>1</strong>篇</span></div><div class="tdCon delAccCon"><div class="conTt"><strong>大爱猫咪控</strong>微信号：daaimaomikong</div><div class="tdInfo"><span>等价活跃粉丝：<font class="blue">100万+</font></span><span>最新WCI：<font class="blue">1428.96</font></span></div><p class="tdInfo">功能介绍：每日分享可爱小猫咪...爱猫人士都关注了<a  class="blue" href="">@大爱猫咪控</a></p><p class="tdInfo">账号主体：安溪鼎优茶叶有限公司</p></div></td></tr>';
+						}
+						$('#delAccTb').append(html);
+						$('#delAccMore').show();
+					}else {
+						$('#delAccMore').addClass('delAccMore').text('全部加载完毕');
+					}
+				}else{
+					$('#delAccMore').addClass('delAccMore').text('全部加载完毕');
+				}
+			},
+			error: function (res)
+			{	
+				$('.loading').addClass('hide');
+				$("#delArtcTb").after("<div class='loading'><span class='getdataImg'></span></div>");
+				$('#delAtcMore').show();
+			}
+		});
+	}
+
+$("#delAccMore").on('click',function(){
+	getDelAccountData();
+});
+
+function setBgHeight(){
+	var oldH = $('.js-bgHeight').outerHeight();
+	var hTop = $('.js-bgHeight').offset().top;
+	var newH = $(window).height() - 105 - hTop;
+	if(oldH < newH){
+		$('.js-bgHeight').outerHeight(newH);
+	}
+}
+
+/*模态窗口*/
+;(function($){
+    $.fn.modalll=function(options){
+       var defaults = {			
+			title : "标题",
+			name :'',
+			width : 1000,
+			content : "",
+			close : "取消",
+			enter : "确定",
+			closeHide : false,
+            footHide : false,
+			callback : null
+		}; 
+		var options = $.extend(defaults,options);
+
+		
+		$(".specialModal").remove();
+		var html = '';
+		html += '<div class="modal fade specialModal '+options.name+'"><div class="modal-dialog" style="width:'+options.width+'px"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title">'+options.title+'</h4></div><div class="modal-body">'+options.content+'</div><div class="modal-footer"><button type="button" class="btn btn-primary">'+options.enter+'</button><button type="button" class="btn btn-white" data-dismiss="modal"  id="modalClose">'+options.close+'</button></div></div></div></div>';
+		$("body").append(html);
+		$('.specialModal').modal('show');
+		$("body").on("click",".modal-header .close,#modalClose",function(){
+			$(".modal,.modal-backdrop").remove();
+			$("body").removeClass("modal-open").attr("style","");
+		})
+
+		if(options.closeHide == true){
+			$("#modalClose").hide();
+		}
+        if(options.footHide == true){
+            $(".modal-footer").remove();
+        }
+		if(options.callback != null){
+			$(".specialModal .btn:first").click(options.callback);
+		}
+	} 
+})(jQuery);

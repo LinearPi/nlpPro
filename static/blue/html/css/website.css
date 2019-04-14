@@ -1,0 +1,11 @@
+.scrollMenu,.scrollbarMd{position:relative;width:217px;}
+.scrollMenu_hide{display:none;height:0;}
+.scrollMenu{display:none}
+.scrollMenu_visible{display:block;}
+.scrollMenu .viewport,.scrollbarMd .viewport{position:relative;overflow:hidden;width:207px;}
+.scrollMenu .overview,.scrollbarMd .overview{position:relative;top:0;left:0;overflow:hidden;width:207px;list-style:none;}
+.scrollMenu .scrollbar,.scrollbarMd .scrollbar{position:relative;float:right;overflow:hidden;width:6px;background-position:0 0;border-radius:5px;}
+.scrollMenu .track,.scrollbarMd .track{position:relative;width:6px;height:100%;background:#f7f7f7;border-radius:5px;}
+.scrollMenu .thumb,.scrollbarMd .thumb{position:absolute;top:0;overflow:hidden;width:6px;height:20px;background:#dddfe5;border-radius:5px;cursor:pointer;}
+.scrollMenu .thumb .end,.scrollbarMd .thumb .end{width:6px;height:5px;background-position:100% 0;}
+.scrollMenu .disable,.scrollbarMd .disable{display:none;}

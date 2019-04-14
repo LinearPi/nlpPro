@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="../static/pager.css"/>
+    <title>清博大数据舆情系统</title>
+
+    <meta name="keywords" content="清博舆情，清博大数据，清博指数，新媒体舆情，新媒体大数据，舆情分析，舆情软件，舆情监测，微博监测，微信监测，舆情报告，舆情预警，海外舆情，数据挖掘"/>
+    <meta name="description" content="清博舆情以大数据为核心技术支撑，实时监测采集全网舆情信息，通过数据挖掘、可视化分析技术，提供舆情监测、分析报告、危机预警等一站式服务"/>
+
+    <link rel="stylesheet" href="{% static 'blue/html/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blue/html/Font-Awesome/css/font-awesome.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blue/html/css/style.css-v=4.0.3.css' %}"/>
+    <link rel="stylesheet" href="{% static 'blue/html/css/index.css-v=4.0.3.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'blue/html/css/pagination.css-v=4.0.3.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'blue/html/css/account.css-v=4.0.3.css' %}">
+    <script src="{% static 'blue/html/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blue/html/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blue/html/js/global.js-v=4.0.3' %}"></script>
+    <script type="text/javascript" src="{% static 'blue/html/js/jquery.jumpto.js-v=4.0.3' %}"></script>
+    <script type="text/javascript" src="{% static 'blue/html/js/jquery.pagination.js-v=4.0.3' %}"></script>
+    <script type="text/javascript" src="{% static 'blue/html/js/jquery.placeholder.min.js-v=4.0.3' %}"></script>
+    <script type="text/javascript" src="{% static 'blue/html/js/moment.min.js-v=4.0.3' %}"></script>
+    <!--[if lt IE 9]><script src="{% static 'blue/html/js/ie8-responsive-file-warning.js' %}" ></script><![endif]-->
+    <script src="{% static 'blue/html/js/ie-emulation-modes-warning.js-v=4.0.3' %}"></script>
+
+    <script type="text/javascript"
+            src="{% static 'blue/html/js/modules/yuqingMonitor/reports/jquery.slimscroll.js-v=4.0.3' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'blue/html/js/modules/yuqingMonitor/reports/jquery.tabs.js-v=4.0.3' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'blue/html/js/modules/yuqingMonitor/reports/jquery-ui-1.10.1.custom.min.js-v=4.0.3' %}"></script>
+
+    <script type="text/javascript"
+            src="{% static 'blue/html/js/modules/yuqingMonitor/reports/scripts.js-v=4.0.3' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="{% static 'blue/html/js/html5shiv.min.js' %}" ></script>
+          <script src="{% static 'blue/html/js/respond.min.js' %}" ></script>
+        <![endif]-->
+
+    <link href="../static/logo.ico"/>
+    <link href="../static/logo.ico"/>
+    <link href="../static/logo.ico"/>
+
+    <script src="{% static 'blue/html/js/sea.js' %}"></script>
+    <script type="text/javascript">
+        CONFIG = $.CONFIG = {
+            "theme_base_url": "\/themes\/blue\/html",
+            "base_url": "",
+            "home_url": "\/",
+            "controller_id": "demo",
+            "action_id": "index",
+            "return_url": "\/"
+        };
+        seajs.config({
+            base: $.CONFIG.theme_base_url + '/js/modules',
+            alias: {
+                jquery: 'jquery/jquery.1.10.1'
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function back_to_index() {
+            location.href = "http://yuqing.gsdata.cn/"
+        }
+
+        $(document).ready(function () {
+            $(".indezPage").jumpto({
+                firstLevel: "> h3",
+                secondLevel: "> h3"
+            });
+            $('input, textarea').placeholder();
+        });
+    </script>
+</head>
+<body>
+<script type="text/javascript" src="{% static 'blue/html/js/echarts-all.js' %}"></script>
+
+<!--顶部-->
+<header>
+    <div class="container">
+        <script type="text/javascript">
+            var windW;
+
+            function resizW() {
+                windW = ($(window).width() - 1210) / 2;
+                if (windW < 0) {
+                    windW = 0;
+                }
+            }
+
+            resizW();
+            $('.container').css('margin-left', windW);
+            $(window).resize(function () {
+                resizW();
+                $('.container').css('margin-left', windW);
+            });
+        </script>
+        <div class="navbar-header">
+            <a href="javascript:if(confirm('http://yuqing.gsdata.cn/site/index  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://yuqing.gsdata.cn/site/index'"/></a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav nav-first">
+                <li class="active">
+                    <a href="index-sid=180739&sc=2.htm"><i class="boder"></i>舆情分析</a>
+                </li>
+            </ul>
+            <!-- 个人信息弹框 -->
+            <div class="r user-wrap js_user_wrap">
+{#                您好，未登录#}
+            </div>
+        </div>
+    </div>
+</header>
+<!--end of 顶部-->
+
+<script>
+    //刷新页面
+    function pageReload() {
+        window.location.reload();
+    }
+
+    //关闭当前页面
+    function pageClose() {
+        window.close();
+    }
+
+    //检查当前用户是否过期,过期返回false
+    function checkUserExpire() {
+        var is_expire = "no";	//过期是yes，没有是no
+        if (is_expire == 'yes') {
+            warning("您的账号使用权限已经到期，请联系客服！");
+            return false;
+        }
+        return true;
+    }
+
+    //全网搜索
+    function searchInAll() {
+        var q = $(".queryAllField").val();
+        var req_url = "/yuqingSearch/index?sort=-1&type=0&sentiment=2" + "&q=" + q;
+        //是否在新的标签页打开连接
+        $newTag = ('yuqingSearch' == "demo") ? '_self' : "_blank";
+        window.open(req_url, $newTag);
+    }
+
+    $('.queryAllField').bind('keypress', function (event) {
+        if (event.keyCode == "13") {
+            searchInAll();
+        }
+    });
+
+    //ajax删除方案
+    function setDelScheme(scheme_id, scheme_name, controller) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl(controller + '/delete'),
+            data: {'sid': scheme_id},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                    var sid_cur = "180739";	//当前页面选中的方案id
+                    if (scheme_id == sid_cur) {
+                        // 如果下一个方案为空，表示删除的是页面上最后一个方案，则默认跳转到第一个方案
+                        if (res.sid) {
+                            //该用户还有分析方案
+                            window.location.href = SITE.ensureUrl(controller + '/index?sid=' + res.sid);
+                        } else {
+                            if (controller == 'yuqingMonitor') {
+                                //该用户没有分析方案，则跳转到订阅中心
+                                window.location.href = SITE.ensureUrl('yuqingMonitor/add');
+                            } else if (controller == 'yuqingAnalysis') {
+                                //该用户没有分析方案，则跳转到订阅中心
+                                window.location.href = SITE.ensureUrl('yuqingAnalysis/add');
+                            } else if (controller == 'yuqingOverseas') {
+                                window.location.href = SITE.ensureUrl('yuqingOverseas/add');
+                            } else if (controller == 'yuqingAdvancedanalysis') {
+                                window.location.href = SITE.ensureUrl('yuqingAdvancedanalysis/add');
+                            }
+                        }
+                    } else {
+                        //不是删除当前的方案，刷新页面即可
+                        pageReload();
+                    }
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('分析方案删除失败！');
+            }
+        });
+    }
+
+    //ajax取消订阅方案
+    function setDelSubscribedScheme(scheme_id, scheme_name) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingSubscribe/unsubscribe'),
+            data: {'sid': scheme_id},
+            async: true,
+            dataType: 'json',
+            beforeSend: function () {
+                var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                $('#num_' + scheme_id).attr('href', 'javascript:void(0)');
+                successDisappear('请稍等...');
+            },
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                    $(".mySubscribedScheme_" + scheme_id).remove();
+                    //修改订阅成功的个数
+                    my_subscribed_num = parseInt($(".my_subscribed_num").text()) - 1;
+                    $(".my_subscribed_num").html(my_subscribed_num <= 0 ? '0' : my_subscribed_num);
+                    //删除“订阅成功标志”的按钮
+                    $(".hot_subscribe_scheme_detail_" + scheme_id).find('.fa-check-circle').remove();
+                    $(".latest_subscribe_scheme_detail_" + scheme_id).find('.fa-check-circle').remove();
+                    // 显示“免费订阅”按钮，隐藏“取消订阅”按钮
+                    $(".hot_subscribe_scheme_" + scheme_id).find(".subscr-add").attr('style', '');
+                    $(".hot_subscribe_scheme_" + scheme_id).find(".subscr-cancel").attr('style', 'display:none;');
+                    $(".latest_subscribe_scheme_" + scheme_id).find(".subscr-add").attr('style', '');
+                    $(".latest_subscribe_scheme_" + scheme_id).find(".subscr-cancel").attr('style', 'display:none;');
+                    $(".subscribe_scheme_" + scheme_id).attr('style', '');
+                    $(".unsubscribe_scheme_" + scheme_id).attr('style', 'display:none;');
+                    //订阅取消成功成功,
+                    var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                    $('#num_' + scheme_id).attr('href', 'javascript:setSubscribed(' + scheme_id + ',\'' + js_scheme_name + '\')');
+                    $('#num_' + scheme_id).text('免费订阅');
+                    if ($(".mySubscribedSchemes>li").length <= 0) {
+                        $(".mySubscribedSchemes").html('<li style="text-align:center;" class="no_data_tip">您还没有订阅舆情方案！</li>');
+                    }
+                } else {
+                    var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                    $('#num_' + scheme_id).attr('href', 'javascript:setDelSubscribedScheme(' + scheme_id + ',\'' + js_scheme_name + '\')');
+
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                $('#num_' + scheme_id).attr('href', 'javascript:setDelSubscribedScheme(' + scheme_id + ',\'' + js_scheme_name + '\')');
+                error('取消订阅失败！');
+            }
+        });
+    }
+
+    //再次提交，添加回溯方案
+    function again_add(type, name, btime, etime, kone, ktwo, exclude) {
+        $.ajax({
+            type: 'post',
+            url: '/yuqingAnalysis/addAgain',
+            data: {
+                'scheme_type': type, 'scheme_name': name, 'begin_time': btime, 'end_time': etime, 'keywords_one': kone,
+                'keywords_two': ktwo, 'keywords_pre': '', 'keywords_exclude': exclude
+            },
+            async: true,
+            dataType: 'json',
+            beforeSend: function () {
+                $(".btn_add").attr('disabled', "true");
+            },
+            success: function (data) {
+                if (data.code == '-1') {
+                    $(".btn_add").removeAttr('disabled');
+                    warning(data.msg);
+                } else {
+                    successDisappear(data.msg);
+                    setTimeout(window.location.href = 'http://yuqing.gsdata.cn/yuqingAnalysis/index?sid=' + data.sid + "&add=1", 2000)
+                }
+
+            },
+            error: function () {
+                $(".btn_add").removeAttr('disabled');
+                warning("网络异常，请稍后重试");
+            }
+        });
+
+    }
+
+    //ajax订阅方案
+    function setSubscribed(scheme_id, scheme_name) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingSubscribe/subscribe'),
+            data: {'sid': scheme_id},
+            async: true,
+            dataType: 'json',
+            beforeSend: function () {
+                var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                $('#num_' + scheme_id).attr('href', 'javascript:void(0)');
+                successDisappear('请稍等...');
+            },
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                    content = "<li class='mySubscribedScheme_" + res.scheme_info.sid + "'>";
+                    content += "<a class='fr' href='javascript:void(0)' title='取消订阅' onclick='javascript:confirmDelSubscribedScheme(\"" + res.scheme_info.sid + "\",\"" + res.scheme_info.sname + "\",\"yuqingSubscribe\")'><i class='fa fa-trash-o'></i></a>";
+                    content += "<a href='http://yuqing.gsdata.cn/yuqingMonitor/index?sc=2&sid=" + res.scheme_info.sid + "'><i class='fa fa-rect'></i>" + res.scheme_info.sname + "</a>";
+                    content += "</li>";
+                    if ($(".mySubscribedSchemes").find(".no_data_tip").length >= 1) {
+                        $(".mySubscribedSchemes").html('');
+                    }
+                    $(".mySubscribedSchemes").append(content);
+                    //修改订阅成功的个数
+                    $(".my_subscribed_num").html(parseInt($(".my_subscribed_num").text()) + 1);
+                    //显示订阅成功标志
+                    $(".hot_subscribe_scheme_detail_" + scheme_id).prepend('<i class="fa fa-check-circle"></i>');
+                    $(".latest_subscribe_scheme_detail_" + scheme_id).prepend('<i class="fa fa-check-circle"></i>');
+                    // 隐藏“免费订阅”按钮，显示“取消订阅”按钮
+                    $(".hot_subscribe_scheme_" + scheme_id).find(".subscr-add").attr('style', 'display:none;');
+                    $(".hot_subscribe_scheme_" + scheme_id).find(".subscr-cancel").attr('style', '');
+                    $(".latest_subscribe_scheme_" + scheme_id).find(".subscr-add").attr('style', 'display:none;');
+                    $(".latest_subscribe_scheme_" + scheme_id).find(".subscr-cancel").attr('style', '');
+                    $(".subscribe_scheme_" + scheme_id).attr('style', 'display:none;');
+                    $(".unsubscribe_scheme_" + scheme_id).attr('style', '');
+                    setLeftMenu();
+                    //订阅成功,
+                    var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                    $('#num_' + scheme_id).attr('href', 'javascript:setDelSubscribedScheme(' + scheme_id + ',\'' + js_scheme_name + '\')');
+                    $('#num_' + scheme_id).text('取消订阅');
+
+                    $("#scrollbar1").data("plugin_tinyscrollbar").update("relative");
+                } else { //订阅失败
+                    var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                    $('#num_' + scheme_id).attr('href', 'javascript:setSubscribed(' + scheme_id + ',\'' + js_scheme_name + '\')');
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                //订阅失败
+                var js_scheme_name = $('#num_' + scheme_id).attr('data-name');
+                $('#num_' + scheme_id).attr('href', 'javascript:setSubscribed(' + scheme_id + ',\'' + js_scheme_name + '\')');
+                error('订阅失败！');
+            }
+        });
+    }
+
+    //添加预警
+    function setWarning(hash_code, scheme_id) {
+        $.ajax({
+            type: 'post',
+            url: '/yuqingNews/warning',
+            data: {'hash_code': hash_code, 'sid': scheme_id},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('预警添加失败！');
+            }
+        });
+    }
+
+    //删除 reload表示删除后是否刷新页面 type=0 默认是舆情分析和舆情分析 delmore表示删除全部含相似
+    function setDel(hash_code, sid, reload, type, delmore) {
+        if (type == 'undefined') {
+            type = 0;
+        }
+
+        if (type) {
+            var url = '/yuqingNews/delOverSea';
+        } else if (delmore) {
+            var url = '/yuqingNews/del?t=delmore';
+        } else {
+            var url = '/yuqingNews/del';
+        }
+
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: {'hash_code': hash_code, 'sid': sid},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                    $('.designAlert').delay(1000).fadeOut(400).queue(function () {
+                        $(this).remove();
+                    });
+
+                    setTimeout(pageReload, 2000);
+// 				if(reload)
+// 				{
+// 					setTimeout(pageReload,2000);
+// 				}else
+// 				{
+// 					//关闭当前窗口
+// 					setTimeout(pageClose,2000);
+// 				}
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('舆情信息删除失败！');
+            }
+        });
+    }
+
+    //删除日报，周报，月报
+    function setDelYuqingReport(report_uuid) {
+        $.ajax({
+            type: 'post',
+            url: '/yuqingReport/delYuqingReport',
+            data: {'report_uuid': report_uuid},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                    setTimeout(pageReload, 2000);
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('删除失败！');
+            }
+        });
+    }
+
+    //舆情分析：信息列表页和详情页，加入媒体到我关注的媒体表中
+    function addToMyAttentionMedia(scheme_id, app_uuid, app_name) {
+        $.ajax({
+            url: '/yuqingMonitor/addToMyAttentionMedia',
+            type: 'post',
+            data: {'sid': scheme_id, 'app_uuid': app_uuid, 'app_name': app_name},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('媒体添加失败！');
+            },
+        });
+    }
+
+    //delmore表示删除全部及相似 boolen  2018-07-09 HY
+    function confirmDel(hash_code, sid, reload, type, delmore) {
+        if (type == '' || type == 'undefined') {
+            type = 0;
+        }
+        if (typeof (delmore) == 'undefined' || delmore == false) {
+            var functionNameAll = false;
+        } else {
+            var functionNameAll = "setDel('" + hash_code + "'," + sid + "," + reload + "," + type + "," + delmore + ")";
+        }
+        var functionName = "setDel('" + hash_code + "'," + sid + "," + reload + "," + type + ")";
+        if (hash_code.match(/,/g)) {
+            var delNum = hash_code.match(/,/g).length + 1;
+            confirming_function('确定删除' + delNum + '条舆情信息吗？', functionName, functionNameAll);
+        } else {
+            var delNum = 1;
+            confirming_function('确定删除这条舆情信息吗？', functionName, functionNameAll);
+        }
+    }
+
+    function confirmSetSubcribed(scheme_id, scheme_name) {
+        var functionName = "setSubscribed('" + scheme_id + "','" + scheme_name + "')";
+        confirming_function_1('您将订阅该舆情方案？', functionName);
+    }
+
+    function confirmWarning(hash_code, scheme_id) {
+        var functionName = "setWarning('" + hash_code + "'," + scheme_id + ")";
+        if (hash_code.match(/,/g)) {
+            var warningNum = hash_code.match(/,/g).length + 1;
+            confirming_function('确定预警' + warningNum + '条舆情信息吗？', functionName);
+        } else {
+            var warningNum = 1;
+            confirming_function('确定预警这条舆情信息吗？', functionName);
+        }
+    }
+
+    function confirmDelScheme(scheme_id, scheme_name, controller) {
+        scheme_name = scheme_name.replace(/'|‘|’|"/g, '');
+        var functionName = "setDelScheme('" + scheme_id + "',\'" + scheme_name + "\','" + controller + "')";
+        confirming_function_1('方案及所有相关信息删除后无法恢复，确认删除？', functionName);
+    }
+
+    function confirmDelSubscribedScheme(scheme_id, scheme_name, controller) {
+        var functionName = "setDelSubscribedScheme('" + scheme_id + "','" + scheme_name + "','" + controller + "')";
+        confirming_function_1('您将取消订阅该舆情方案？', functionName);
+    }
+
+    function confirmDelYuqingReport(report_uuid) {
+        if (report_uuid == '') {
+            return false;
+        }
+        var functionName = "setDelYuqingReport('" + report_uuid + "')";
+        confirming_function_1('确定要删除吗？', functionName);
+    }
+
+    function confirmChange(hash_code, reload) {
+        //0.85,0.60,0.35代表的是正面的值
+        var func_negative = "updateEmotionValue('" + hash_code + "','负面','negative','0.35.htm'/*tpa=http://yuqing.gsdata.cn/demo/0.35*/," + reload + ")";
+        var func_neutral = "updateEmotionValue('" + hash_code + "','中性','neutral','0.60.htm'/*tpa=http://yuqing.gsdata.cn/demo/0.60*/," + reload + ")";
+        var func_positive = "updateEmotionValue('" + hash_code + "','正面','positive','0.85.htm'/*tpa=http://yuqing.gsdata.cn/demo/0.85*/," + reload + ")";
+        emotion_confirming('情感属性修改为', func_negative, func_neutral, func_positive);
+    }
+
+    scheme_id = "180739";
+    //检测订单的支付转态
+    var t1;
+    var sum = 0;
+    var timer = 10000;	//10秒
+    function check_pay_status(sn) {
+        sum++;
+        if (sum > 60) {
+            window.clearInterval(t1);
+            return false;
+        }
+        $.ajax({
+            url: '/accountUp/checkPayStatus',
+            data: {'order_id': sn},
+            dataType: 'json',
+            async: true,
+            type: 'post',
+            success: function (res) {
+                if (res.code == '1') {
+                    //已支付
+                    $("input[name=pay_status]").val("1");
+                    $('#winxinPay').modal('hide');
+                    $('#winxinPay_jianbao').modal('hide');
+                    $("#successPay").modal("show");
+                    if (res.pay_type == 2) {  //方案对比
+                        window.location.href = 'http://yuqing.gsdata.cn/yuqingCompare/index';
+                    } else if (res.pay_type == 3) {  //简报
+                        window.location.href = 'http://yuqing.gsdata.cn/yuqingMonitor/briefdoc?sid=' + scheme_id + '&sc=1&nav=tpl';
+                    } else if (res.pay_type == 4) {  //回溯分析
+                        window.location.href = 'http://yuqing.gsdata.cn/yuqingAnalysis/index?sid=' + res.scheme_id;
+                    } else if (res.pay_type == 7) {
+                        window.location.href = 'http://yuqing.gsdata.cn/siteWarn/post';
+                    }
+                    window.clearInterval(t1);
+                } else if (res.code == '-2') {
+                    $("input[name=pay_status]").val("0");
+                    error(res.msg);
+                    window.clearInterval(t1);
+                }
+            },
+            error: function (res) {
+                window.clearInterval(t1);
+            }
+        });
+    }
+
+    //支付请求   帐号升级
+    function payRequest(sn, pay_method) {
+        if (pay_method == 1) {
+            //跳转到支付宝支付页面
+            window.open('http://yuqing.gsdata.cn/accountUp/alipayRequest?sn=' + sn, '_blank');
+            //每隔10秒钟分析一次
+            t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+        } else if (pay_method == 2) {
+            //跳转到微信扫码支付页面
+            $.ajax({
+                url: '/accountUp/wxpayRequest',
+                type: 'post',
+                async: true,
+                data: {"sn": sn},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == '1') {
+                        //二维码生成成功
+                        $(".payment-code-img>img").attr('src', "/site/returnImg?url=" + res.data.code_url);
+                        $('#winxinPay').modal('show');
+                        //每隔10秒钟分析一次
+                        t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+                    } else {
+                        error('支付请求失败！');
+                    }
+                },
+                error: function (res) {
+                    error('支付请求失败！');
+                }
+            });
+        }
+    }
+
+    //支付请求 全网预警
+    function payRequest_warn(sn, pay_method) {
+        if (pay_method == 1) {
+            //跳转到支付宝支付页面
+            window.open('http://yuqing.gsdata.cn/siteWarn/alipayRequest?sn=' + sn, '_blank');
+            //每隔10秒钟分析一次
+            t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+        } else if (pay_method == 2) {
+            //跳转到微信扫码支付页面
+            $.ajax({
+                url: '/siteWarn/wxpayRequest',
+                type: 'post',
+                async: true,
+                data: {"sn": sn},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == '1') {
+                        //二维码生成成功
+                        $(".payment-code-img>img").attr('src', "/site/returnImg?url=" + res.data.code_url);
+                        $('#winxinPay').modal('show');
+                        //每隔10秒钟分析一次
+                        t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+                    } else {
+                        error('支付请求失败！');
+                    }
+                },
+                error: function (res) {
+                    error('支付请求失败！');
+                }
+            });
+        }
+    }
+
+    //支付请求   方案对比
+    function payRequest_1(sn, pay_method) {
+        if (pay_method == 1) {
+            //跳转到支付宝支付页面
+            window.open('http://yuqing.gsdata.cn/yuqingCompare/alipayRequest?sn=' + sn, '_blank');
+            //每隔10秒钟分析一次
+            t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+        } else if (pay_method == 2) {
+            //跳转到微信扫码支付页面
+            $.ajax({
+                url: '/yuqingCompare/wxpayRequest',
+                type: 'post',
+                async: true,
+                data: {"sn": sn},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == '1') {
+                        //二维码生成成功
+                        $(".payment-code-img>img").attr('src', "/site/returnImg?url=" + res.data.code_url);
+                        $('#winxinPay').modal('show');
+                        //每隔10秒钟分析一次
+                        t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+                    } else {
+                        error('支付请求失败！');
+                    }
+                },
+                error: function (res) {
+                    error('支付请求失败！');
+                }
+            });
+        }
+    }
+
+    //支付请求   简报
+    function payRequest_jianbao(sn, pay_method) {
+        if (pay_method == 1) {
+            //跳转到支付宝支付页面
+            window.open('http://yuqing.gsdata.cn/yuqingBriefdoc/alipayRequest?sn=' + sn, '_blank');
+            //每隔10秒钟分析一次
+            t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+        } else if (pay_method == 2) {
+            //跳转到微信扫码支付页面
+            $.ajax({
+                url: '/yuqingBriefdoc/wxpayRequest',
+                type: 'post',
+                async: true,
+                data: {"sn": sn},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == '1') {
+                        //二维码生成成功
+                        $(".payment-code-img_jianbao>img").attr('src', "/site/returnImg?url=" + res.data.code_url);
+                        $('#winxinPay_jianbao').modal('show');
+                        //每隔10秒钟分析一次
+                        t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+                    } else {
+                        error('支付请求失败！');
+                    }
+                },
+                error: function (res) {
+                    error('支付请求失败！');
+                }
+            });
+        }
+    }
+
+    //支付请求  回溯分析
+    function payRequest_schemeback(sn, pay_method) {
+        if (pay_method == 1) {
+            //跳转到支付宝支付页面
+            window.open('http://yuqing.gsdata.cn/payMent/alipayRequest?sn=' + sn, '_blank');
+            //每隔10秒钟分析一次
+            t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+        } else if (pay_method == 2) {
+            //跳转到微信扫码支付页面
+            $.ajax({
+                url: '/payMent/wxpayRequest',
+                type: 'post',
+                async: true,
+                data: {"sn": sn},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == '1') {
+                        //二维码生成成功
+                        $(".payment-code-img-schemeback>img").attr('src', "/site/returnImg?url=" + res.data.code_url);
+                        $('#winxinPay_schemeback').modal('show');
+                        //每隔10秒钟分析一次
+                        t1 = window.setInterval("check_pay_status('" + sn + "')", timer);
+                    } else {
+                        error('支付请求失败！');
+                    }
+                },
+                error: function (res) {
+                    error('支付请求失败！');
+                }
+            });
+        }
+    }
+
+    //生成订单
+    function generateUpOrder(buy_data_num, buy_delay_time, pay_method, token_pay) {
+        user_id = "";
+        ep_id = "22";
+        post_data = {
+            'user_id': user_id,
+            'enterprise_id': ep_id,
+            'buy_data_num': buy_data_num,
+            'buy_delay_time': buy_delay_time,
+            'pay_method': pay_method,
+            'token_pay': token_pay
+        };
+        $.ajax({
+            url: '/accountUp/generateOrder',
+            type: 'post',
+            async: true,
+            data: post_data,
+            dataType: 'json',
+            success: function (res) {
+                // $('.js_payment_btn').removeClass('disabled');
+                if (res.code == '1') {
+                    //订单生成成功
+                    payRequest(res.data.sn, res.data.pay_method);
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('支付请求失败！');
+                $('.js_payment_btn').removeClass('disabled');
+            }
+        });
+    }
+
+    //全网预警 生成订单
+    function generateWarnOrder(buy_delay_time, pay_method) {
+        user_id = "";
+        ep_id = "22";
+        post_data = {
+            'user_id': user_id,
+            'enterprise_id': ep_id,
+            'buy_delay_time': buy_delay_time,
+            'pay_method': pay_method
+        };
+        $.ajax({
+            url: '/siteWarn/saveOrders',
+            type: 'post',
+            async: true,
+            data: post_data,
+            dataType: 'json',
+            success: function (res) {
+                $('.js_payment_btn').removeClass('disabled');
+                if (res.code == 1) {
+                    //订单生成成功
+                    payRequest_warn(res.data.sn, res.data.pay_method);
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('支付请求失败！');
+                $('.js_payment_btn').removeClass('disabled');
+            }
+        });
+    }
+
+    function updateEmotionValue(hash_code, emotion_cn, emotion_en, emotion_value, reload) {
+        scheme_id = "180739";
+        //alert(hash_code+","+emotion_cn+","+emotion_en+","+emotion_value);
+
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingNews/updateEmotionValue'),
+            data: {'scheme_id': scheme_id, 'hash_code': hash_code, 'emotion_value': emotion_value},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    successDisappear(res.msg);
+                    if (reload) {
+                        //文章详情页修改情感属性
+                        $("#updatEmotion").removeClass().addClass(emotion_en).find('.orange').html(emotion_cn);
+                        //setTimeout(pageReload,1000);
+                    } else {
+                        //信息汇总页面修改情感属性
+                        $("#updateEmotionValue_" + hash_code).removeClass().addClass(emotion_en).html(emotion_cn);
+                    }
+                    $.ajax({
+                        // commit
+                        type: 'post',
+                        url: SITE.ensureUrl('yuqingNews/updateEmotionValueCommit'),
+                        data: {'scheme_id': scheme_id},
+                        async: true,
+                        dataType: 'json',
+                        success: function (res) {
+                        },
+                        error: function (res) {
+                        }
+                    });
+                } else {
+                    error(res.msg);
+                }
+            },
+            error: function (res) {
+                error('情感属性修改失败！');
+            }
+        });
+    }
+
+    //ajax请求相关文章的条数
+    function getAnalogousArticleNum(hash_code, sim_hash, fq, scheme_id) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingNews/getAnalogousArticleNum?trace=uid:Q|sid:' + scheme_id),
+            data: {'sim_hash': sim_hash, 'fq': fq, 'sid': scheme_id},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                $("." + hash_code).html(res.msg);
+            }
+        });
+    }
+
+    function getAnalogousArticleNum_demo(hash_code, sim_hash, fq, scheme_id) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('demo/getAnalogousArticleNum'),
+            data: {'sim_hash': sim_hash, 'fq': fq, 'sid': scheme_id},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                $("." + hash_code).html(res.msg);
+            }
+        });
+    }
+
+    //ajax请求获取文章对应的分析词组
+    function getAlertKeywords(sid, hash_code, news_local_url, alert_keywords) {
+        if (alert_keywords == 'undefined') {
+            alert_keywords = '';
+        }
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingNews/getAlertKeywords?trace=uid:Q|sid:' + sid),
+            data: {'sid': sid, 'news_local_url': news_local_url, 'hash_code': hash_code},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    $(".alert_keywords_" + hash_code).html(res.msg);
+                } else {
+                    // 使用默认
+                    $(".alert_keywords_" + hash_code).html(alert_keywords);
+                }
+            },
+            error: function (res) {
+                $(".alert_keywords_" + hash_code).html(alert_keywords);
+            }
+        });
+    }
+
+    function getAlertKeywords_demo(sid, hash_code, news_local_url, alert_keywords) {
+        if (alert_keywords == 'undefined') {
+            alert_keywords = '';
+        }
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('demo/getAlertKeywords'),
+            data: {'sid': sid, 'news_local_url': news_local_url},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == '1') {
+                    $(".alert_keywords_" + hash_code).html(res.msg);
+                } else {
+                    // 使用默认
+                    $(".alert_keywords_" + hash_code).html(alert_keywords);
+                }
+            },
+            error: function (res) {
+                $(".alert_keywords_" + hash_code).html(alert_keywords);
+            }
+        });
+    }
+
+    //信息汇总页面的各维度文章数量的统计（舆情分析和专题分析）
+    function getArticlesNumFound(fq, add_new, sid, all, sortby, words) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingNews/getArticlesNumFound'),
+            data: {'fq': fq, 'sid': sid, 'all': (all ? all : 0), 'sort': sortby, 'words': (words ? words : '')},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (add_new == '1') {
+                    //刚刚添加的方案
+                    //				$(".type_total").html("");
+                    //				$(".wx_total").html("");
+                    //				$(".app_total").html("");
+                    //				$(".weibo_total").html("");
+                    //				$(".web_total").html("");
+                    //				$(".forum_total").html("");
+                } else {
+                    $(".type_total").html("(" + res.msg.type_total + ")");
+                    $(".wx_total").html("(" + res.msg.wx_total + ")");
+                    $(".app_total").html("(" + res.msg.app_total + ")");
+                    $(".weibo_total").html("(" + res.msg.weibo_total + ")");
+                    $(".web_total").html("(" + res.msg.web_total + ")");
+                    $(".forum_total").html("(" + res.msg.forum_total + ")");
+                    $(".journal_total").html("(" + res.msg.journal_total + ")");
+                    $(".toutiao_total").html("(" + res.msg.toutiao_total + ")");
+                }
+                $(".type_total").attr("data-rel", res.msg.type_total);
+                $(".wx_total").attr("data-rel", res.msg.wx_total);
+                $(".app_total").attr("data-rel", res.msg.app_total);
+                $(".weibo_total").attr("data-rel", res.msg.weibo_total);
+                $(".web_total").attr("data-rel", res.msg.web_total);
+                $(".forum_total").attr("data-rel", res.msg.forum_total);
+                $(".journal_total").attr("data-rel", res.msg.journal_total);
+                $(".toutiao_total").attr("data-rel", res.msg.toutiao_total);
+            },
+            error: function (res) {
+                $(".type_total").html("(0)");
+                $(".wx_total").html("(0)");
+                $(".app_total").html("(0)");
+                $(".weibo_total").html("(0)");
+                $(".web_total").html("(0)");
+                $(".forum_total").html("(0)");
+                $(".journal_total").html("(0)");
+                $(".toutiao_total").html("(0)");
+
+                $(".type_total").attr("data-rel", "0");
+                $(".wx_total").attr("data-rel", "0");
+                $(".app_total").attr("data-rel", "0");
+                $(".weibo_total").attr("data-rel", "0");
+                $(".web_total").attr("data-rel", "0");
+                $(".forum_total").attr("data-rel", "0");
+                $(".journal_total").attr("data-rel", "0");
+                $(".toutiao_total").attr("data-rel", "0");
+            }
+        });
+    }
+
+    function getArticlesNumFound_demo(fq, add_new, sid, all, sortby) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('demo/getArticlesNumFound'),
+            data: {'fq': fq, 'sid': sid, 'all': (all ? all : 0), 'sort': sortby},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (add_new == '1') {
+                    //刚刚添加的方案
+                    //				$(".type_total").html("");
+                    //				$(".wx_total").html("");
+                    //				$(".app_total").html("");
+                    //				$(".weibo_total").html("");
+                    //				$(".web_total").html("");
+                    //				$(".forum_total").html("");
+                } else {
+                    $(".type_total").html("(" + res.msg.type_total + ")");
+                    $(".wx_total").html("(" + res.msg.wx_total + ")");
+                    $(".app_total").html("(" + res.msg.app_total + ")");
+                    $(".weibo_total").html("(" + res.msg.weibo_total + ")");
+                    $(".web_total").html("(" + res.msg.web_total + ")");
+                    $(".forum_total").html("(" + res.msg.forum_total + ")");
+                    $(".journal_total").html("(" + res.msg.journal_total + ")");
+                }
+                $(".type_total").attr("data-rel", res.msg.type_total);
+                $(".wx_total").attr("data-rel", res.msg.wx_total);
+                $(".app_total").attr("data-rel", res.msg.app_total);
+                $(".weibo_total").attr("data-rel", res.msg.weibo_total);
+                $(".web_total").attr("data-rel", res.msg.web_total);
+                $(".forum_total").attr("data-rel", res.msg.forum_total);
+                $(".journal_total").attr("data-rel", res.msg.journal_total);
+            },
+            error: function (res) {
+                $(".type_total").html("(0)");
+                $(".wx_total").html("(0)");
+                $(".app_total").html("(0)");
+                $(".weibo_total").html("(0)");
+                $(".web_total").html("(0)");
+                $(".forum_total").html("(0)");
+                $(".journal_total").html("(0)");
+
+                $(".type_total").attr("data-rel", "0");
+                $(".wx_total").attr("data-rel", "0");
+                $(".app_total").attr("data-rel", "0");
+                $(".weibo_total").attr("data-rel", "0");
+                $(".web_total").attr("data-rel", "0");
+                $(".forum_total").attr("data-rel", "0");
+                $(".journal_total").attr("data-rel", "0");
+            }
+        });
+    }
+
+    //信息汇总页面的各维度文章数量的统计（海外舆情）
+    function getArticlesNumFound_overseas(fq, add_new, sid, all) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingNews/getArticlesNumFound_overseas'),
+            data: {'fq': fq, 'sid': sid, 'all': (all ? all : 0)},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                if (add_new == '1') {
+                } else {
+
+                    $(".oversea_type_total").html("(" + res.msg.oversea_type_total + ")");
+                    $(".oversea_web_total").html("(" + res.msg.oversea_web_total + ")");
+                    $(".oversea_journal_total").html("(" + res.msg.oversea_journal_total + ")");
+                    $(".oversea_facebook_total").html("(" + res.msg.oversea_facebook_total + ")");
+                    $(".oversea_twitter_total").html("(" + res.msg.oversea_twitter_total + ")");
+
+                }
+                $(".oversea_type_total").attr("data-rel", res.msg.oversea_type_total);
+                $(".oversea_web_total").attr("data-rel", res.msg.oversea_web_total);
+                $(".oversea_journal_total").attr("data-rel", res.msg.oversea_journal_total);
+                $(".oversea_facebook_total").attr("data-rel", res.msg.oversea_facebook_total);
+                $(".oversea_twitter_total").attr("data-rel", res.msg.oversea_twitter_total);
+            },
+            error: function (res) {
+                $(".oversea_type_total").html("(0)");
+                $(".oversea_web_total").html("(0)");
+                $(".oversea_journal_total").html("(0)");
+                $(".oversea_facebook_total").html("(0)");
+                $(".oversea_twitter_total").html("(0)");
+
+                $(".oversea_type_total").attr("data-rel", "0");
+                $(".oversea_web_total").attr("data-rel", "0");
+                $(".oversea_journal_total").attr("data-rel", "0");
+                $(".oversea_facebook_total").attr("data-rel", "0");
+                $(".oversea_twitter_total").attr("data-rel", "0");
+            }
+        });
+    }
+
+    //评论分析页面的各维度评论数量的统计
+    function getCommentsNumFound(fq) {
+        $.ajax({
+            type: 'post',
+            url: SITE.ensureUrl('yuqingNews/getCommentsNumFound'),
+            data: {'fq': fq},
+            async: true,
+            dataType: 'json',
+            success: function (res) {
+                $(".comment_type_total").html("(" + res.msg.comment_type_total + ")");
+                $(".comment_wx_total").html("(" + res.msg.comment_wx_total + ")");
+                $(".comment_app_total").html("(" + res.msg.comment_app_total + ")");
+                $(".comment_weibo_total").html("(" + res.msg.comment_weibo_total + ")");
+                $(".comment_web_total").html("(" + res.msg.comment_web_total + ")");
+                $(".comment_forum_total").html("(" + res.msg.comment_forum_total + ")");
+                $(".comment_journal_total").html("(" + res.msg.comment_journal_total + ")");
+
+                $(".comment_type_total").attr("data-rel", res.msg.comment_type_total);
+                $(".comment_wx_total").attr("data-rel", res.msg.comment_wx_total);
+                $(".comment_app_total").attr("data-rel", res.msg.comment_app_total);
+                $(".comment_weibo_total").attr("data-rel", res.msg.comment_weibo_total);
+                $(".comment_web_total").attr("data-rel", res.msg.comment_web_total);
+                $(".comment_forum_total").attr("data-rel", res.msg.comment_forum_total);
+                $(".comment_journal_total").attr("data-rel", res.msg.comment_journal_total);
+            },
+            error: function (res) {
+                $(".comment_type_total").html("(0)");
+                $(".comment_wx_total").html("(0)");
+                $(".comment_app_total").html("(0)");
+                $(".comment_weibo_total").html("(0)");
+                $(".comment_web_total").html("(0)");
+                $(".comment_forum_total").html("(0)");
+                $(".comment_journal_total").html("(0)");
+
+                $(".comment_type_total").attr("data-rel", "0");
+                $(".comment_wx_total").attr("data-rel", "0");
+                $(".comment_app_total").attr("data-rel", "0");
+                $(".comment_weibo_total").attr("data-rel", "0");
+                $(".comment_web_total").attr("data-rel", "0");
+                $(".comment_forum_total").attr("data-rel", "0");
+                $(".comment_journal_total").attr("data-rel", "0");
+            }
+        });
+    }
+
+    //传入情感中文名称，获取对应的值(这个方法在图表的点击事件中用到)
+    function getSentimentValue(sentiment_zh) {
+        var sentiment_value = "0";
+        if (sentiment_zh == '正面') {
+            sentiment_value = "1";
+        } else if (sentiment_zh == '负面') {
+            sentiment_value = "2";
+        } else if (sentiment_zh == '中性') {
+            sentiment_value = "3";
+        }
+        return sentiment_value;
+    }
+
+    //传入媒体属性中文名称，获取对应的值(这个方法在图表的点击事件中用到)
+    function getCateValue(cate_zh) {
+        var cate_value = "0";
+        if (cate_zh == '政府网站') {
+            cate_value = "1";
+        } else if (cate_zh == '新闻媒体') {
+            cate_value = "2";
+        } else if (cate_zh == 'KOL') {
+            cate_value = "3";
+        }
+        return cate_value;
+    }
+
+    //传入媒体平台中文名称，获取对应的值(这个方法在图表的点击事件中用到)
+    function getTypeValue(type_zh) {
+        var type_value = "0";
+        if (type_zh == '微信') {
+            type_value = "1";
+        } else if (type_zh == '客户端') {
+            type_value = "2";
+        } else if (type_zh == '微博') {
+            type_value = "3";
+        } else if (type_zh == '网页') {
+            type_value = "4";
+        } else if (type_zh == '论坛') {
+            type_value = "5";
+        } else if (type_zh == '报刊') {
+            type_value = "6";
+        }
+        return type_value;
+    }
+
+    //海外舆情媒体来源
+    function getTypeValue_overseas(type_zh) {
+        var type_value = "0";
+        if (type_zh == '网页') {
+            type_value = "7";
+        } else if (type_zh == '纸媒') {
+            type_value = "8";
+        } else if (type_zh == 'Facebook') {
+            type_value = "9";
+        } else if (type_zh == 'Twitter') {
+            type_value = "10";
+        }
+        return type_value;
+    }
+
+    //传入微信文章位置的中文名称，获取对应的值(这个方法在图表的点击事件中用到)
+    function getHeadlineValue(headline_zh) {
+        var headline_value = "0";
+        if (headline_zh == '头条') {
+            headline_value = "1";
+        } else if (headline_zh == '二条') {
+            headline_value = "2";
+        } else if (headline_zh == '三条') {
+            headline_value = "3";
+        } else if (headline_zh == '四条') {
+            headline_value = "4";
+        } else if (headline_zh == '五条') {
+            headline_value = "5";
+        } else if (headline_zh == '六条') {
+            headline_value = "6";
+        } else if (headline_zh == '七条') {
+            headline_value = "7";
+        } else if (headline_zh == '八条+') {
+            headline_value = "8";
+        }
+        return headline_value;
+    }
+
+    //传入微信原创的中文名字, 获取对应的值(这个方法在图表的点击事件中用到)
+    function getOriginalValue(original_name) {
+        var original_value = "1";
+        if (original_name == '原创') {
+            original_value = "1";
+        } else {
+            original_value = "0";
+        }
+
+        return original_value;
+    }
+
+    //传入传播层级的中文名称，获取对应的值(这个方法在图表的点击事件中用到)
+    function getTrendfloorValue(trendfloor_zh) {
+        var trendfloor_value = "1";
+        if (trendfloor_zh == '第1层') {
+            trendfloor_value = "1";
+        } else if (trendfloor_zh == '第2层') {
+            trendfloor_value = "2";
+        } else if (trendfloor_zh == '第3层') {
+            trendfloor_value = "3";
+        } else if (trendfloor_zh == '第4层') {
+            trendfloor_value = "4";
+        } else if (trendfloor_zh == '第5层') {
+            trendfloor_value = "5";
+        } else if (trendfloor_zh == '第6层') {
+            trendfloor_value = "6";
+        } else if (trendfloor_zh == '第7层') {
+            trendfloor_value = "7";
+        } else if (trendfloor_zh == '第8层+') {
+            trendfloor_value = "8";
+        }
+        return trendfloor_value;
+    }
+
+    //过滤html标签
+    function filterHtmltags(content) {
+        var start_ptn = /[ | ]*\n/g;     //过滤标签结束
+        var end_ptn = /<\/?[^>]*>/g;      //过滤标签开头
+        var space_ptn = /&nbsp;/ig;      //过滤标签结尾
+        var other = /（.*）/
+        var text = content.replace(start_ptn, "").replace(end_ptn, "").replace(space_ptn, "").replace(other, "");
+        return text;
+    }
+
+    //根据参数的值获取其对应的中文名称
+    function getPosttimeNameByValue(param_value) {
+        var arr = new Array();
+        arr["0"] = "全部";
+        arr["-1"] = "自定义时间";
+        arr["4"] = "近7天";
+        arr["2"] = "今天";
+        arr["1"] = "昨天";
+        arr["5"] = "近30天";
+        return arr[param_value];
+    }
+
+    function getSentimentNameByValue(param_value) {
+        var arr = new Array();
+        arr["0"] = "全部";
+        arr["2"] = "负面";
+        arr["1"] = "正面";
+        arr["3"] = "中性";
+        return arr[param_value];
+    }
+
+    function getCateNameByValue(param_value) {
+        var arr = new Array();
+        arr["0"] = "全部";
+        arr["1"] = "政府网站";
+        arr["2"] = "新闻媒体";
+        arr["3"] = "KOL";
+        return arr[param_value];
+    }
+
+    function getTypeNameByValue(param_value) {
+        var arr = new Array();
+        arr["0"] = "全部";
+        arr["1"] = "微信";
+        arr["2"] = "客户端";
+        arr["3"] = "微博";
+        arr["4"] = "网页";
+        arr["5"] = "论坛";
+        arr["6"] = "报刊";
+        arr["21"] = "今日头条";
+        return arr[param_value];
+    }
+
+    function getTypeNameByValue_overseas(param_value) {
+        var arr = new Array();
+        arr["0"] = "全部";
+        arr["7"] = "网页";
+        arr["8"] = "纸媒";
+        arr["9"] = "Facebook";
+        arr["10"] = "Twitter";
+        return arr[param_value];
+    }
+</script>
+
+<script type="text/javascript">
+    (function () {
+        var payView = {
+            init: function () {
+                var _this = this;
+                _this.render();
+                _this.bind();
+            },
+            render: function () {
+
+            },
+            bind: function () {
+                $('.js_user_wrap').hover(function () {
+                    $(this).find('.js_user_card').stop().fadeIn();
+                }, function () {
+                    $(this).find('.js_user_card').stop().fadeOut();
+                });
+
+                $('.js-nav').hover(function () {
+                    $(this).find('.js-nav-down').stop().fadeIn();
+                }, function () {
+                    $(this).find('.js-nav-down').stop().fadeOut();
+                });
+            }
+        };
+
+        $(function () {
+            payView.bind();
+        });
+
+    })(jQuery);
+</script>
+
+
+<input type="hidden" name="scheme_id" value="180739"/>        <!-- 存放选择的方案的id -->
+<input type="hidden" name="posttime" value="0"/>        <!-- 存放时间 -->
+<input type="hidden" name="type" value="0"/>                    <!-- 存放媒体类型 -->
+<input type="hidden" name="scheme_category" value="2"/>    <!-- 存放方案类别 -->
+<div class="w10">
+
+    <script type="text/javascript">
+        $('body > .w10').css('margin-left', windW);
+        $(window).resize(function () {
+            resizW();
+            $('body > .w10').css('margin-left', windW);
+        });
+    </script>
+
+    <div class="indezPage">
+        <!--左侧菜单部分-->
+        <div class="leftMenu">
+            <div class="leftMenu_fix">
+                <h3><label>监测方案<span class="caret"></span></label>
+                </h3>
+                <div id="scrollbar2" class="scrollMenu">
+                    <div class="scrollbar">
+                        <div class="track">
+                            <div class="thumb">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="viewport">
+                        <ul class="overview menuLi menuLiTwo">
+                            <li>
+                                <ul class="menLi_2">
+                                    <li>
+                                        <a title="方案删除" class="fr" href="javascript:void(0)"><i
+                                                class="fa fa-trash-o"></i></a>
+                                        <i class="fa fa-rect"></i>关键词：</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of左侧菜单部分-->
+
+        <script type="text/javascript">
+            //分析方案左侧菜单超过一定的高度折叠
+            var offsetT_temp;
+            var offsetT_cur = 0, offsetT_cur2 = 0, menuLi_h1, menuLi_h2;
+            var menuLi_h = $(window).height() - 188;
+
+            function setLeftMenu() {
+                menuLi_h2 = $('#scrollbar2').height();
+                menuLi_h1 = $('#scrollbar1').height();
+                menuLi_h2 = (menuLi_h2 > menuLi_h / 2) ? menuLi_h / 2 : menuLi_h2;
+                menuLi_h1 = ((menuLi_h - menuLi_h2) > menuLi_h1) ? menuLi_h1 : (menuLi_h - menuLi_h2);
+
+                if ($(".menuLiOne").height() > menuLi_h1) {
+                    $(".menuLiOne").addClass("menuLi_flod");
+                    $(".menuLiOne").find("li.active").parent('ul').slideDown();
+                    $(".menuLiOne").find("li.active").parents('li').siblings('li').find('ul').hide();
+                    $("#scrollbar1 .viewport").height(menuLi_h1);
+
+                    if ($(".menuLiOne").find("li.active").position() == undefined) {
+                        offsetT_temp = 0;
+                    } else {
+                        offsetT_temp = $(".menuLiOne").find("li.active").position().top - menuLi_h1;
+                    }
+                    offsetT_cur = (offsetT_temp > 0) ? offsetT_temp : 0;
+                }
+
+                if ($('#scrollbar2').height() > menuLi_h2) {
+                    $("#scrollbar2 .viewport").height(menuLi_h2);
+                    //$(".menuLiTwo").find("li.active").parents('.scrollMenu').siblings('.scrollMenu').find('.menLi_2').hide();
+                    if ($(".menuLiTwo").find("li.active").position() == undefined) {
+                        offsetT_temp = 0;
+                    } else {
+                        offsetT_temp = $(".menuLiTwo").find("li.active").position().top - menuLi_h;
+                    }
+                    offsetT_cur2 = (offsetT_temp > 0) ? offsetT_temp : 0;
+                }
+            }
+
+            setLeftMenu();
+
+            $(".menuLi_flod > li").find('.liFirst').click(function () {
+                $(this).next("ul").toggle();
+                $("#scrollbar1").data("plugin_tinyscrollbar").update("relative");
+            });
+
+            $('.leftMenu h3').find('label').click(function () {
+                var _thisLM = $(this).parent().next(".scrollMenu");
+                _thisLM.toggleClass('scrollMenu_hide');
+                var htemp_1 = _thisLM.height();
+                var htemp_2 = _thisLM.siblings('.scrollMenu').height();
+                var htemp_ul1 = _thisLM.find('.menuLi').outerHeight();
+                var htemp_ul2 = _thisLM.siblings('.scrollMenu').find('.menuLi').outerHeight();
+
+                if (htemp_1 != 0 && htemp_2 != 0) {
+                    $('#scrollbar1 .viewport').height(menuLi_h1);
+                    $('#scrollbar2 .viewport').height(menuLi_h2);
+                } else if (htemp_1 != 0) {
+                    var htemp = (htemp_ul1 > menuLi_h) ? menuLi_h : htemp_ul1;
+                    _thisLM.find('.viewport').height(htemp);
+                } else if (htemp_2 != 0) {
+                    var htemp = (htemp_ul2 > menuLi_h) ? menuLi_h : htemp_ul2;
+                    _thisLM.siblings('.scrollMenu').find('.viewport').height(htemp);
+                }
+
+                $("#scrollbar1").data("plugin_tinyscrollbar").update("relative");
+                $("#scrollbar2").data("plugin_tinyscrollbar").update("relative");
+            });
+
+            //鼠标滚动左侧栏和面包屑固定
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 91) {
+                    $(".leftMenu_fix").css({top: '0', position: 'fixed'});
+                    $(".contentRt:not(.white_bg)").addClass("contentRt_fix");
+                    $(".crumbs,.nav-pills").width($(".contentRt").width());
+                } else {
+                    $(".leftMenu_fix").css({position: 'static'});
+                    $(".contentRt:not(.white_bg)").removeClass("contentRt_fix");
+                }
+            });
+        </script>
+        <link rel="stylesheet" href="{% static 'blue/html/css/website.css' %}"/>
+        <script type="text/javascript"
+                src="{% static 'blue/html/js/modules/leftmenu/jquery.tinyscrollbar.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'blue/html/js/modules/leftmenu/website.js' %}"></script>
+        <!--右边部分-->
+        <div class="contentRt">
+            <!--头部面包屑-->
+            <div class="crumbs_fix">
+                <div class="crumbs">
+                    <span>褚时健去世</span>
+                    <!--结果中搜索-->
+                    <div class="fr">
+                        <div class="input-group fr">
+                            <i class="close red hidden" title="关闭搜索结果">×</i>
+                            <input id="exampleInputAmount" class="form-control queryField" type="text"
+                                   placeholder="方案内搜索" value="" maxlength="15">
+                            <button class="input-group-addon searchInResult"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="sort-dropdown seach-dropdown fl">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                <label>搜内容</label><i class="caret"></i>
+                            </button>
+                            <ul class="dropdown-menu search_from">
+                                <li role="presentation">
+                                    <a href="javascript:void(0);" class="aHver" data-rel="1">搜内容</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="javascript:void(0);" data-rel="2">搜媒体</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end of 结果中搜索-->
+                </div>
+            </div>
+            <!--结束 头部面包屑-->
+
+            <!-- 页面导航部分 -->
+            <div class="contentBt">
+                <ul class="nav nav-pills">
+                    <li class="active">   <!--active 为tab项选中class-->
+                        <a href="index-sid=180739&sc=2.htm">信息汇总</a>
+                        <i class="fa fa-caret-down"></i>
+                    </li>
+                    <li role="presentation">
+                        <a href="content-sid=180739&sc=2.htm">内容分析</a>
+                        <i class="fa fa-caret-down"></i>
+                    </li>
+{#                    <li role="presentation">#}
+{#                        <a href="trans-sid=180739&sc=2.htm">传播分析</a>#}
+{#                        <i class="fa fa-caret-down"></i>#}
+{#                    </li>#}
+{#                    <li role="presentation">#}
+{#                        <a href="weixin-sid=180739&sc=2.htm">微信分析</a>#}
+{#                        <i class="fa fa-caret-down"></i>#}
+{#                    </li>#}
+{#                    <li role="presentation">#}
+{#                        <a href="weibo-sid=180739&sc=2.htm">微博分析</a>#}
+{#                        <i class="fa fa-caret-down"></i>#}
+{#                    </li>#}
+{#                    <li role="presentation">#}
+{#                        <a href="edit-sid=180739&sc=2.htm">方案设置</a>#}
+{#                        <i class="fa fa-caret-down"></i>#}
+{#                    </li>#}
+                </ul>
+            </div>
+            <!-- 页面导航部分结束 -->
+
+            <!--条件搜索部分-->
+            <!-- 监测方案设置页面筛选条件 -->
+            <div class="searchTerm">
+                <!-- 所有页面都有时间筛选条件 -->
+                <div class="teOn posttime clearfix">
+
+                    <div class="fl">
+                        <span>时间：</span>
+                        <a href="">全部</a>
+                        <a href="">今天</a>
+                        <a href="">昨天</a>
+                        <a href="">近7天</a>
+                        <a href="">近30天</a>
+{#                        <span class="cusTime" data-rel="-1">自定义</span>#}
+                    </div>
+                    <div class="custom">
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:00"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm-dd hh:ii">
+                            <input class="form-control" size="16" type="text" value="" readonly name="begin_time"/>
+                            <span class="input-group-addon">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</span>
+                        </div>
+                        <span>&nbsp;-&nbsp;</span>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:00"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm-dd hh:ii">
+                            <input class="form-control" size="16" type="text" value="" readonly name="end_time"/>
+                            <span class="input-group-addon">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</span>
+                        </div>
+                        <a href="javascript:void(0)" data-rel="-1" class="termBt searchByCustomTime">确认</a>
+                    </div>
+
+                    <!--时间插件-->
+                    <link rel="stylesheet" type="text/css"
+                          href="{% static 'blue/html/css/bootstrap-datetimepicker.min.css' %}"/>
+                    <script type="text/javascript" src="{% static 'blue/html/js/bootstrap-datetimepicker.js' %}"></script>
+                    <script type="text/javascript"
+                            src="{% static 'blue/html/js/bootstrap-datetimepicker.zh-CN.js' %}"></script>
+                    <script type="text/javascript">
+                        function getTime(mydate) {
+                            var year = mydate.getFullYear();
+                            var mon = mydate.getMonth() + 1;
+                            var day = mydate.getDate();
+                            var hour = mydate.getHours();
+                            var min = mydate.getMinutes();
+                            var mydate_ftm = year + "-" + mon + "-" + day + " " + hour + ":" + min;
+                            return mydate_ftm;
+                        }
+
+                        var nowDate = new Date();
+
+                        //var stdate = new Date(nowDate.getTime() - 30 * 24 * 3600 * 1000);
+                        if ("1551715200" != 1) {
+                            var stdate = new Date(1551715200 * 1000);
+                        } else {
+                            var stdate = new Date();
+                        }
+                        var startDate_format = getTime(stdate);
+                        $('.form_date').datetimepicker({
+                            language: 'zh-CN',
+                            weekStart: 1,
+                            todayBtn: 1,
+                            autoclose: 1,
+                            todayHighlight: 1,
+                            startDate: startDate_format,
+                            endDate: nowDate,
+                            startView: 2,
+                            minView: 1,
+                            maxView: 1,
+                            forceParse: 0
+                        });
+                        $('.form_date,.input-group-addon').on('click', function () {
+                            $(".form_date").datetimepicker("setEndDate", new Date());
+                        });
+                    </script>
+                </div>
+
+                <!-- 只有信息汇总和传播分析有情感属性筛选条件 -->
+                <div class="teOn sentiment clearfix">
+                    <span>情感：</span>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">全部</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=1&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">正面</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=3&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">中性</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=2&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">负面</a>
+                </div>
+
+                <!-- 只有信息汇总有排序筛选条件 -->
+                <div class="teOn sortby clearfix">
+                    <span>排序：</span>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">时间降序</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=3&match=3&sf=1&sc=2.htm">时间升序</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=4&match=3&sf=1&sc=2.htm">权重降序</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=2&match=3&sf=1&sc=2.htm">热度降序</a>
+                </div>
+
+                <!-- 只有信息汇总有媒体属性筛选条件 -->
+                <div class="teOn cate clearfix">
+                    <span>媒体属性：</span>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">全部</a>
+
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=1&sort=1&match=3&sf=1&sc=2.htm">政府网站</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=2&sort=1&match=3&sf=1&sc=2.htm">新闻媒体</a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=3&sort=1&match=3&sf=1&sc=2.htm">KOL</a>
+                </div>
+
+                <!-- 只有信息汇总和内容分析有媒体平台筛选条件 -->
+                <div class="teOn type clearfix">
+                    <span>媒体平台：</span>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">全部
+                        <span class="orange type_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=1&cate=0&sort=1&match=3&sf=1&sc=2.htm">微信
+                        <span class="orange wx_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=3&cate=0&sort=1&match=3&sf=1&sc=2.htm">微博
+                        <span class="orange weibo_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=4&cate=0&sort=1&match=3&sf=1&sc=2.htm">网页
+                        <span class="orange web_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=6&cate=0&sort=1&match=3&sf=1&sc=2.htm">报刊
+                        <span class="orange journal_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=2&cate=0&sort=1&match=3&sf=1&sc=2.htm">客户端
+                        <span class="orange app_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+                    <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=5&cate=0&sort=1&match=3&sf=1&sc=2.htm">论坛
+                        <span class="orange forum_total" data-rel="">
+							<i class="load-icon"></i>
+						</span>
+                    </a>
+                </div>
+            </div>
+            <!--end of条件搜索部分-->
+
+            <!--表格列表部分-->
+            <!-- 只有信息汇总有标题匹配等筛选条件 -->
+            <div class="termTable">
+                <div class="tableTt">
+				<span class="chose fl">
+					<label class="btn-disabled">
+						<input type="checkbox" name="checkbox" value="" id="selectAll" disabled>全选
+					</label>
+					<a class="btn-disabled">预警</a>
+					<a class="btn-disabled">删除</a>
+					<span>
+						<a class="btn-disabled">下载</a>
+					</span>
+				</span>
+                    <div class="sort-dropdown fl">
+                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                            全文匹配
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=1&match=3&sf=1&sc=2.htm">全文匹配</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="index-sid=180739&q=&post_time=0&sentiment=0&type=0&cate=0&sort=1&match=1&sf=1&sc=2.htm">标题匹配</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <span class="fr">
+					<a href="/index" class="downLoad setRefresh">刷新</a>
+				</span>
+                </div>
+                <div class="monitInfoTip"><a href="javascript:void(0);">您有 <em class="orange">0</em> 条新信息，点击查看</a></div>
+                <!--文章列表部分-->
+                <!-- 用户存放文章列表按热度排序时，文章列表的总数 -->
+                <input name="sim_num" type="hidden" value="400"/>
+                <table class="ternTb">
+                    {% for content in contents %}
+
+                    <tr>
+                        <td class="vertical_top">
+                            <input type="checkbox" name="uuid[]" value="78165-2bf2cb2656ea66d0d6cf78580c8a8c04"
+                                   class="tt select" disabled/>
+                        </td>
+                        <td>
+                            <div class="tdCon">
+                                <div class="conTt ">
+                                    <a class="tt">
+
+                                            {% if content.emotion < 0.33 %}
+                                                <span class="negative">
+                                                负面
+                                            {% elif content.emotion < 0.66%}
+                                                <span class="neutral">
+                                                中性
+                                            {% else %}
+                                                <span class="positive">
+                                                正面
+                                            {% endif %}</span>
+                                        <span>{{ content.content }}</span>
+                                    </a>
+                                    <p class="fr">
+                                        <a title="修改" class="blue_bg disabled_bg">改</a>
+                                        <a title="添加预警" class="orange_bg disabled_bg">警</a>
+                                        <a title="删除" class="red_bg disabled_bg">删</a>
+                                    </p>
+                                </div>
+                                <div class="rwn">
+                                    <a href="javascript:"></a>
+                                    <a target="_blank"><span
+                                        class="blue">相似文章：<span
+                                        class="78165-2bf2cb2656ea66d0d6cf78580c8a8c04">获取中...</span></span></a></div>
+
+                                <div class="tdBt">
+                                    <span>监测词组：<span class="alert_keywords_78165-2bf2cb2656ea66d0d6cf78580c8a8c04">正在获取...</span></span>
+                                    <span>主题词：
+                                        {% for word in content.key_words %}
+                                            {{ word }}
+                                        {% endfor %}
+                                      </span>
+                                    <span class="source">
+              			来源：
+              			              			<a target='_blank' href="{{ content.url }}" class="replaceURL"
+                                                   data-url="eQmBpD3ScJ2qQixnMgj5M2O0O0O1"> <i class='fa fa-wechat'></i>
+                                                    {% if  content.source  %}
+                                                        {{ content.source }}
+                                                    {% else %}
+                                                        中华网
+                                                    {% endif %} </a>
+                                        <!--
+              			<a  class="" href="">
+
+             			</a>
+             			-->
+              									<div class="tooltip sourceTip addToMyAttentionMedia"
+                                                     data-rel="180739;0;指尖划动微时代"><a>重点关注该媒体</a></div>
+						                    </span>
+                                    <span class="fr">{{ content.time }}</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+                <!--分页-->
+                <div class="paging">
+
+                    {% if pages.has_previous %}
+                        <a href="?page={{ pages.previous_page_number }}"> 上一页</a>
+                    {% endif %}
+                    <span>{{ pages.number }} of {{ pages.paginator.num_pages }}</span>
+                    {% if pages.has_next %}
+                        <a href="?page={{ pages.next_page_number }}">下一页</a>
+                    {% endif %}
+
+                </div>
+                <!--end of分页-->
+                <script>
+                    $(function () {
+                        //显示相似文章的条数
+                        function showAnalogousArticleNum() {
+                            getAnalogousArticleNum_demo("78165-30bfd42fb1ac75c3bf70843b1a85a2df", "78165-4ec2d7662c6a356eeddd0d6c95772b45", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-221574c4c688ac9d4236b8d6d3f391d6", "78165-c11df062581113e3f0485b8a1b41a7b2", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-f695d692162715b90b2590b4861f6d72", "78165-c1dd5cc150edb791c412757e2bd943f5", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-e0f4385e70b3ab8bd6cf5bdf9c4da3bb", "78165-c11df062581113e3f0485b8a1b41a7b2", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-ac251d7a862cfa18be4602473a56b1cd", "78165-7959b86eff4be43249ee48e7ce44be5d", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-73aa727fa943afc0e2a8d13511749f04", "78165-0d877db5b583ad763eba7d24d448102d", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-ea68a00dde3b9229a1ddf71574c62d57", "78165-d0db19449f88290f76f5dff0f627e78c", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-cdb11b546330531680be31801a53fcb6", "78165-858bdfa525a305ba62461e25deb563c1", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-e48921d65927cecc43b6523e8bd5bd19", "78165-82236e5d47f312baad1049e9ab8df7f4", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                            getAnalogousArticleNum_demo("78165-2bf2cb2656ea66d0d6cf78580c8a8c04", "78165-cfc020572316ec8a09d6477ae25f71db", ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND  -news_content:""', "180739");
+                        }
+
+                        function showAlertKeywords() {
+                            getAlertKeywords_demo("180739", "78165-30bfd42fb1ac75c3bf70843b1a85a2df", "docs/2019/03/25/20/30bfd42fb1ac75c3bf70843b1a85a2df.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/20/30bfd42fb1ac75c3bf70843b1a85a2df.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-221574c4c688ac9d4236b8d6d3f391d6", "docs/2019/03/25/19/221574c4c688ac9d4236b8d6d3f391d6.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/19/221574c4c688ac9d4236b8d6d3f391d6.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-f695d692162715b90b2590b4861f6d72", "docs/2019/03/25/19/f695d692162715b90b2590b4861f6d72.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/19/f695d692162715b90b2590b4861f6d72.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-e0f4385e70b3ab8bd6cf5bdf9c4da3bb", "docs/2019/03/25/19/e0f4385e70b3ab8bd6cf5bdf9c4da3bb.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/19/e0f4385e70b3ab8bd6cf5bdf9c4da3bb.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-ac251d7a862cfa18be4602473a56b1cd", "docs/2019/03/25/18/ac251d7a862cfa18be4602473a56b1cd.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/18/ac251d7a862cfa18be4602473a56b1cd.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-73aa727fa943afc0e2a8d13511749f04", "docs/2019/03/25/18/73aa727fa943afc0e2a8d13511749f04.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/18/73aa727fa943afc0e2a8d13511749f04.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-ea68a00dde3b9229a1ddf71574c62d57", "docs/2019/03/25/18/ea68a00dde3b9229a1ddf71574c62d57.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/18/ea68a00dde3b9229a1ddf71574c62d57.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-cdb11b546330531680be31801a53fcb6", "docs/2019/03/25/18/cdb11b546330531680be31801a53fcb6.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/18/cdb11b546330531680be31801a53fcb6.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-e48921d65927cecc43b6523e8bd5bd19", "docs/2019/03/25/18/e48921d65927cecc43b6523e8bd5bd19.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/18/e48921d65927cecc43b6523e8bd5bd19.html*/, "褚时健+去世");
+                            getAlertKeywords_demo("180739", "78165-2bf2cb2656ea66d0d6cf78580c8a8c04", "docs/2019/03/25/18/2bf2cb2656ea66d0d6cf78580c8a8c04.html"/*tpa=http://yuqing.gsdata.cn/demo/docs/2019/03/25/18/2bf2cb2656ea66d0d6cf78580c8a8c04.html*/, "褚时健+去世");
+                        }
+
+                        // 信息列表按时间降序排序时，才用ajax方式获取相似文章数
+                        showAnalogousArticleNum();
+                        // 显示监测词组
+                        showAlertKeywords();
+                    });
+                </script>            <!--end of 文章列表部分-->
+            </div>
+            <!--end of表格列表部分-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    /*
+* 如果未定义   getHit();
+* 该方法是在index 的列表中定义
+*/
+    if (typeof getHit != "function") {
+        var getHit = function () {
+        }
+    }
+
+    /*
+* wci 获取
+*/
+    function getWci() {
+        $('.wci').each(function () {
+            var obj = $(this);
+            var wx_name = $(this).attr("data-rel1");
+            getWciAjxj(wx_name, obj);
+        });
+    }
+
+    $(function () {
+        //阅读点赞数  wci指数
+        getWci();
+        getHit();
+    });
+</script>
+
+<!--底部-->
+<div class="footer">
+    <div class="container">
+        <div class="footer-link clearfix">
+            <div class="icp fr">
+                <img src="{% static 'blue/html/images/beian.png' %}"/>
+                <a target="_blank"
+                   href="javascript:if(confirm('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024017  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024017'">
+                    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备
+                        11010802024017号</p></a>
+            </div>
+            <a class="fr"
+               href="javascript:if(confirm('http://report.12377.cn:13225/toreportinputNormal_anis.do  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://report.12377.cn:13225/toreportinputNormal_anis.do'">信息举报链接</a>
+            <div class="fl text-left">
+                <a href="javascript:if(confirm('http://www.gsdata.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gsdata.cn/'">清博指数</a>
+                <a href="javascript:if(confirm('http://ads.gsdata.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://ads.gsdata.cn/'">清博广告</a>
+                <a href="javascript:if(confirm('http://guanjia.gsdata.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://guanjia.gsdata.cn/'">清博管家</a>
+            </div>
+        </div>
+        <span> 版权所有  北京清博大数据科技有限公司     京ICP备16036802号</span>
+        <font>
+            <i class="fa fa-phone-square"></i>
+            <span>18519110232</span>
+            <i class="fa fa-wechat"></i>
+            <span>清博小舆（qingboyuqing002）</span>
+            <i class="fa fa-envelope"></i>
+            <span>yuqing@gsdata.cn</span>
+            <i class="fa fa-qq"></i>
+            <span>清博小舆：3246166373</span>
+        </font>
+    </div>
+</div>
+<div class="fixed-btn">
+    <div class="fixedLi">
+        <a href="javascript:if(confirm('http://yuqing.gsdata.cn/accountManager/feedback  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ���Ѿ���վ���������ų���������ų���·����ַ��(��ϵͳ�� Teleport Ultra �����ǿ�ѡ��; �μ���Ŀ����, �������ǡ�)  \n\n�����ڷ������ϴ���?'))window.location='http://yuqing.gsdata.cn/accountManager/feedback'">
+            <i class="fa fa-feedback"></i>
+            <span class="">在线反馈</span>
+        </a>
+    </div>
+    <div class="fixedLi">
+        <a href="javascript:if(confirm('http://yuqing.gsdata.cn/site/help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://yuqing.gsdata.cn/site/help'">
+            <i class="fa fa-question-circle"></i>
+            <span class="">帮助中心</span>
+        </a>
+    </div>
+    <div class="fixedLi">
+        <a class="code" href="javascript:void(0);">
+            <i class="fa fa-qrcode"></i>
+            <span class="">舆情公号</span>
+        </a>
+        <div class="fixed-down hide"><img src="{% static 'blue/html/images/yqgcode.jpg' %}"></div>
+    </div>
+    <div class="fixedLi">
+        <a class="code" href="javascript:void(0);">
+            <i class="fa fa-qq"></i>
+            <span class="">Q Q 客服</span>
+        </a>
+        <div class="fixed-down hide"><img src="{% static 'blue/html/images/qqcode.jpg' %}"></div>
+    </div>
+    <div class="fixedLi">
+        <a class="code" href="javascript:void(0);">
+            <i class="fa fa-wechat"></i>
+            <span class="">微信客服</span>
+        </a>
+        <div class="fixed-down hide"><img src="{% static 'blue/html/images/qbcode.jpg' %}"></div>
+    </div>
+    <div class="fixedLi tel">
+        <a href="javascript:void(0);">
+            <i class="fa fa-phone-square"></i>
+            <span class="">客服号码</span>
+        </a>
+        <div class="fixed-down hide">18519110232</div>
+    </div>
+    <div class="fixedLi to_top hide">
+        <a class="javascript:void(0);">
+            <i></i>
+            <span class="fs14">返回顶部</span>
+        </a>
+    </div>
+
+</div>
+
+
+<!--end of底部-->
+<script type="text/javascript" src="{% static 'blue/html/js/jsrender.js' %}"></script>
+<script type="text/javascript" src="{% static 'blue/html/js/site.js' %}"></script>
+<script type="text/javascript" src="{% static 'blue/html/js/gsdata.core.js' %}"></script>
+<script type="text/javascript">
+    //刷新页面
+    function pageReload() {
+        location.reload(true);
+    }
+
+    // 加载tooltips
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+
+        classNameHeight();
+
+        $('#myTab a, .btn_preview').click(function () {
+            classNameHeight();
+        });
+
+        $(window).resize(function () {
+            classNameHeight();
+        });
+    });
+
+    function classNameHeight() {
+        if ($(document).height() > $(window).height()) {
+            $('body > .w10').height('auto');
+            return;
+        }
+
+        $('body > .w10').height('auto');
+
+        setTimeout(function () {
+            var wh = $(document).height();
+            var hh = $('body > header').outerHeight(true);
+            var fh = $('body > .footer').outerHeight(true);
+            var otH = 0;
+            if ($('div').hasClass('header-after')) {
+                otH = $('.header-after').outerHeight(true);
+            }
+
+            $('body > .w10').height(wh - hh - fh - otH);
+        }, 500);
+    }
+</script>
+
+<p id="text"></p>
+
+<script>
+    $('.fixedLi a').hover(function () {
+        $(this).next('.fixed-down').removeClass('hide');
+    }, function () {
+        $('.fixed-down').addClass('hide');
+    });
+    //点击回到顶部按钮
+    $('.to_top').click(function () {
+        $('body,html').animate({'scrollTop': 0}, 200);
+    });
+
+    $(window).on('scroll', function () {
+        var $this = $(this),
+            scrollTop = $this.scrollTop(),
+            scrollHeight = $this.outerHeight() / 2;
+
+        if (scrollTop > scrollHeight) {
+            $('.to_top').removeClass('hide');
+        } else {
+            $('.to_top').addClass('hide');
+        }
+    });
+</script>
+
+<!-- 百度统计 -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "../../hm.baidu.com/hm.js-293b2731d4897253b117bb45d9bb7023"/*tpa=https://hm.baidu.com/hm.js?293b2731d4897253b117bb45d9bb7023*/;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!-- 百度统计 -->
+
+<!-- 百度统计 -->
+
+
+</body>
+</html>
+<script>
+    if ($('.contentRt').has('.monit-rtTab')) {
+        var windH = $(window).height() - $('.footer').outerHeight() - $('.upgrad-tip').outerHeight() - 205;
+        var oldH = $('.monit-rtTab').height();
+        if (windH > oldH) {
+            $('.monit-rtTab').css('min-height', windH);
+        }
+    }
+    if ($('.contentBt').hasClass('creat')) {
+        var windH = $(window).height() - $('.footer').outerHeight() - $('.upgrad-tip').outerHeight() - 258;
+        var oldH = $('.creat').height();
+        if (windH > oldH) {
+            $('.creat').css('min-height', windH);
+        }
+    }
+    if ($('.contentRt').has('.compareList')) {
+        var windH = $(window).height() - $('.footer').outerHeight() - $('.upgrad-tip').outerHeight() - 165;
+        var oldH = $('.compareList').height();
+        if (windH > oldH) {
+            $('.compareList').css('min-height', windH);
+        }
+    }
+    var fiveTime;
+    clearTimeout(fiveTime);
+    fiveTime = setTimeout(function () {
+        $('.dataNumTip').slideUp(400);
+    }, 30000);
+
+    $(function () {
+        /*****************搜索内容清空*******************/
+        $('#exampleInputAmount').bind('input propertychange', function () {
+            var searVal = $("#exampleInputAmount").val();
+            if (searVal.length > 0) {
+                $(this).prev('.close').removeClass('hidden');
+            } else {
+                $(this).prev('.close').addClass('hidden');
+            }
+        });
+
+        $('.crumbs .close').on('click', function () {
+            $("#exampleInputAmount").val('');
+            $(this).addClass('hidden');
+        });
+
+
+        //异步请求各维度的文章数量
+        getArticlesNumFound_demo(' scheme_id:180739 AND *:* AND *:* AND *:* AND status:1 AND  -news_content:""', '0', '180739', '1', "1");
+
+        /*********************1分钟显示更新条数************/
+        var time = "60000";
+
+        if ("index" == 'index') {
+            var i = 0;
+            var timeID;
+
+            function update() {
+                var scheme_id = '180739';
+                var fq = ' scheme_id:180739 AND *:* AND *:* AND *:* AND *:* AND status:1 AND  -news_content:""';
+                var data_web = $(".web_total").attr("data-rel");
+                var data_app = $(".app_total").attr("data-rel");
+                var data_weibo = $(".weibo_total").attr("data-rel");
+                var data_wx = $(".wx_total").attr("data-rel");
+                var data_forum = $(".forum_total").attr("data-rel");
+                var data_journal = $(".journal_total").attr("data-rel");
+                var data_total = $(".type_total").attr("data-rel");
+                var type = $(".type").find(".aHver").attr('data-rel');
+                if (i != 0) {
+                    $.ajax({
+                        type: 'post',
+                        url: '/demo/updateSum',
+                        data: {
+                            'sid': scheme_id,
+                            'fq': fq,
+                            'dataall': data_total,
+                            'datanet': data_web,
+                            'datanews': data_app,
+                            'dataweibo': data_weibo,
+                            'dataweixin': data_wx,
+                            'dataforum': data_forum,
+                            'datajournal': data_journal,
+                            'type': type
+                        },
+                        async: true,
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.code == '1' && res.msg > 0) {
+                                $(".monitInfoTip").show();
+                                $(".monitInfoTip a em").text(res.msg);
+                                $('.loading').css('margin-top', '58px').find('span').hide();
+                                //setTimeout(pageReload,2000);
+                            }
+                            clearTimeout(timeID);
+                            i++;
+                            timeID = setTimeout(update, time);
+                        },
+                        error: function (res) {
+                            clearTimeout(timeID);
+                            i++;
+                            timeID = setTimeout(update, time);
+                        }
+                    });
+                } else {
+                    clearTimeout(timeID);
+                    i = 1;
+                    timeID = setTimeout(update, time);
+                }
+            }
+
+            update();
+        }
+
+        /*********************1分钟显示更新条数************/
+        /*****************60秒后刷新**********************/
+        var wait = 60;
+        var timeID;
+
+        function time(obj) {
+            if (wait == 0) {
+                window.location.reload();
+                clearTimeout(timeID);
+            } else {
+                wait--;
+                var waitNum = (wait < 10) ? ("0" + wait) : wait;
+                $(obj).text(waitNum);
+                timeID = setTimeout(function () {
+                    time('.coutTime span');
+                }, 1000);
+            }
+        }
+
+        //$(".monitInfoTip").show();
+        $("#timeRefresh").click(function () {
+            if ($(this).attr("checked") == "checked") {
+                $(this).removeAttr("checked");
+                clearTimeout(timeID);
+                $(this).next('span').text('00');
+            } else {
+                $(this).attr("checked", "checked");
+                clearTimeout(timeID);
+                wait = 60;
+                $(this).next('span').text('60');
+                time('.coutTime span');
+            }
+        });
+
+        $(".setRefresh,.monitInfoTip a").bind("click", function () {
+            window.location.reload();
+        });
+
+        /*****************在结果中搜索**********************/
+        $('.queryField').bind('keypress', function (event) {
+            if (event.keyCode == "13") {
+                $(".searchInResult").click();
+            }
+        });
+
+        $(".searchInResult").bind("click", function () {
+            var search_from = $(".search_from").find(".aHver").attr('data-rel');	//默认从内容中检索
+            var q = $(".queryField").val();	//检索词
+            var posttime = $(".posttime").find(".aHver").attr('data-rel');	//时间
+            var type = $(".type").find(".aHver").attr('data-rel');			//媒体平台
+            var cate = $(".cate").find(".aHver").attr('data-rel');			//媒体属性
+            var sentiment = $(".sentiment").find(".aHver").attr('data-rel'); 	//情感
+            if (posttime == "-1") {
+                var begin_time = $("input[name=begin_time]").val();
+                var end_time = $("input[name=end_time]").val();
+
+                if (begin_time == '' || end_time == '') {
+                    warning('开始时间和结束时间都不能为空！');
+                    return false;
+                } else if (begin_time >= end_time) {
+                    warning('开始时间应小于结束时间！');
+                    return false;
+                }
+                //拼接查询url
+                var req_host = "/demo/index?sid=180739&sort=1&match=3&sc=2";
+                var req_params = "&q=" + q + "&cate=" + cate + "&type=" + type + "&sentiment=" + sentiment + "&post_time=" + posttime + "&begin_time=" + begin_time + "&end_time=" + end_time;
+            } else {
+                //拼接查询url
+                var req_host = "/demo/index?sid=180739&sort=1&match=3&sc=2";
+                var req_params = "&q=" + q + "&cate=" + cate + "&type=" + type + "&sentiment=" + sentiment + "&post_time=" + posttime;
+            }
+            req_params += "&sf=" + search_from;
+            window.location.href = req_host + req_params;
+        });
+
+        /*****************首页自定义时间查询**********************/
+        $(".searchByCustomTime").click(function () {
+            if ('index' == "index") {
+                var begin_time = $("input[name=begin_time]").val();
+                var end_time = $("input[name=end_time]").val();
+
+                if (begin_time == '' || end_time == '') {
+                    warning('开始时间和结束时间都不能为空！');
+                    return false;
+                } else if (begin_time >= end_time) {
+                    warning('开始时间应大于结束时间！');
+                    return false;
+                }
+                var url_posttime_defined = "/yuqingMonitor/index?sid=180739&q=&post_time=-1&sentiment=0&type=0&cate=0&sort=1&match=3&sc=2" + "&begin_time=" + begin_time + "&end_time=" + end_time;
+                $(this).attr('href', url_posttime_defined);
+            }
+        });
+        //显示自定义时间输入框
+        if ($(".cusTime").hasClass('aHver')) {
+            $(".cusTime").trigger('click');
+        }
+    });
+
+</script>
+<script>
+    //图表点击提示
+    function echarts_click_tip() {
+        if (!0) {
+            warning("登录后可查看更多内容！");
+            return false;
+        }
+        return true;
+    }
+</script>

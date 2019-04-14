@@ -1,0 +1,7 @@
+#Pagination{margin:0;}
+.pagination{margin:0;font-size:90%;}
+.pagination a{text-decoration:none;}
+.pagination a,.pagination span{display:block;float:left;min-width:1em;padding:.3em .5em;margin:0 5px;margin-bottom:5px;text-align:center;}
+.pagination .current{color:#45a0e6;border-bottom:2px solid #45a0e6;}
+.pagination .prev,.pagination .next,.pagination .prev:hover,.pagination .next:hover{color:#fff;background:#45a0e6;border:none;}
+.pagination .current.prev,.pagination .current.next,.pagination .current.prev:hover,.pagination .current.next:hover{color:#c2c2c2;background:#eee;border:none;}
