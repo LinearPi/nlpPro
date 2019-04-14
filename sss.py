@@ -3,6 +3,7 @@ from snownlp import SnowNLP
 import jieba
 from bson import ObjectId
 from collections import Counter
+from wordcloud import WordCloud
 
 
 client = pymongo.MongoClient(host='localhost', port=27017)
@@ -22,21 +23,21 @@ for cl in clo:
     all_words.extend(cl['key_words'])
 # print(name)
 # print(count)
-print(all_words)
+# print(all_words)
 
 
-c = Counter()
-for x in all_words:
-    if len(x)>1 and x != '\r\n':
-        c[x] += 1
-print('常用词频度统计结果')
-for (k,v) in c.most_common(40):
-    print('%s%s %s  %d' % ('  '*(5-len(k)), k, '*'*int(v/3), v))
+# c = Counter()
+# for x in all_words:
+#     if len(x)>1 and x != '\r\n':
+#         c[x] += 1
+# print('常用词频度统计结果')
+# for (k,v) in c.most_common(40):
+#     print('%s%s %s  %d' % ('  '*(5-len(k)), k, '*'*int(v/3), v))
 
 
-
-
-
+wordcloudimg = WordCloud(font_path= '/nlpPro/static/ziti/ZhuLangXinSong.otf',background_color='white', max_font_size=80).generate(all_words)
+# word_img = wordcloudimg.to_array()
+wordcloudimg.to_file('word_loud.jpg')
 
 
 
@@ -55,3 +56,4 @@ for (k,v) in c.most_common(40):
 #     collection.update_many({"_id":ObjectId(i['_id'])}, {"$set":{
 #     "emotion": emotion(i['content']),
 #     "key_words":key_list(i['content'])}})
+
