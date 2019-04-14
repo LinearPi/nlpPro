@@ -64,15 +64,15 @@ class Big(View):
                 sourceNameCount.append(sou["count"])
         clasifer = ["军事", "经济", "投资", "产经", "汽车", "佛教", "电影", "游戏", "三农", "科技", "文史", "政务"]
         clasifernum = [180, 130, 80, 40, 200, 28, 150, 207, 273, 87, 253, 80, 94]
-        c = Counter()
 
+        c = Counter()
         for i in collecttions:
-            for word in i['key_words']:
-                c[word] += 1
-        for (k,v) in c.most_common(40):
+            if i['key_words']:
+                for word in i['key_words']:
+                    c[word] += 1
+        for (k, v) in c.most_common(40):
             allKeyWord.append(k)
             allKeyWordCount.append(v)
-
 
         numy = {"ne": ne,
                 "po": po,
