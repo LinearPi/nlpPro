@@ -67,8 +67,8 @@ class Big(View):
 
         c = Counter()
         for i in collecttions:
-            if i['key_words']:
-                for word in i['key_words']:
+            if i["key_words"]:
+                for word in i["key_words"]:
                     c[word] += 1
         for (k, v) in c.most_common(40):
             allKeyWord.append(k)
