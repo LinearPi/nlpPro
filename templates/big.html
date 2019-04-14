@@ -65,46 +65,21 @@
 
 
         <div class="border-container containerbottom borderno-container">
-            <ul class="teacher-pie clearfix">
-                <li class="teacherList">
-                    <div class="name-title tile-size-color">
-                        故障时段分布
-                    </div>
-                    <div id="courserate">
-                        <div class="line-chart" id="line-chart"></div>
-                        <ul class="SiteStatusList">
-                            <li><i class="Statusnormal Statussame"></i>合计故障次数 <span>556</span></li>
+            <div class="name-title tile-size-color"> 新闻分类</div>
 
-                        </ul>
-                    </div>
-                </li>
-                <li class="teacherList">
-                    <div class="name-title tile-size-color">
-                        故障类型分布
-                    </div>
-                    <div class="bars-chart" id="bars-chart"></div>
-                </li>
-            </ul>
+            <div class="bar-chart" id="class_new"></div>
         </div>
     </div>
 
     <div class="main-right">
-        <div class="border-container containertop">
-            <div class="name-title tile-size-color">
-                优秀区域排名
+
+        <div class="border-container" style="height: 90%">
+             <div class="name-title tile-size-color">
+                关键词分类
             </div>
-            <div class="progress1-chart" id="progress1-chart"></div>
+            <div style="height: 100%;" id="key-chart"></div>
         </div>
 
-        <div class="border-container containerbottom">
-            <div class="name-title tile-size-color">
-                故障类型分布
-            </div>
-            <div id="radar-chart" class="radar-chart">
-
-            </div>
-
-        </div>
 
     </div>
 
@@ -163,7 +138,7 @@
         },
         tooltip: {},
         legend: {
-            data:['来源量']
+            data: ['来源量']
         },
         xAxis: {
             data: {{ num.sourceNameList | safe }}
@@ -180,6 +155,157 @@
     panChart.setOption(option);
 </script>
 
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var classChart = echarts.init(document.getElementById('class_new'));
 
+    var dataAxis = {{ num.clasifer | safe }};
+    var data = {{ num.clasifernum }};
+    var yMax = 0;
+    var dataShadow = [];
+
+    for (var i = 0; i < data.length; i++) {
+        dataShadow.push(yMax);
+    }
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '',
+            subtext: ''
+        },
+        xAxis: {
+            data: dataAxis,
+            axisLabel: {
+                inside: true,
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            z: 10
+        },
+        yAxis: {
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#999'
+                }
+            }
+        },
+        dataZoom: [
+            {
+                type: 'inside'
+            }
+        ],
+        series: [
+            { // For shadow
+                type: 'bar',
+                itemStyle: {
+                    normal: {color: 'rgba(0,0,0,0.05)'}
+                },
+                barGap: '-100%',
+                barCategoryGap: '40%',
+                data: dataShadow,
+                animation: false
+            },
+            {
+                type: 'bar',
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [
+                                {offset: 0, color: '#83bff6'},
+                                {offset: 0.5, color: '#188df0'},
+                                {offset: 1, color: '#188df0'}
+                            ]
+                        )
+                    },
+                    emphasis: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [
+                                {offset: 0, color: '#2378f7'},
+                                {offset: 0.7, color: '#2378f7'},
+                                {offset: 1, color: '#83bff6'}
+                            ]
+                        )
+                    }
+                },
+                data: data
+            }
+        ]
+    };
+
+    var zoomSize = 6;
+    classChart.on('click', function (params) {
+        console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+        classChart.dispatchAction({
+            type: 'dataZoom',
+            startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+            endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+        });
+    });
+    // 使用刚指定的配置项和数据显示图表。
+    classChart.setOption(option);
+</script>
+
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var keyChart = echarts.init(document.getElementById('key-chart'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '',
+            subtext: ''
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['2011年', '2012年']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: {{ num.allKeyWord | safe }}
+        },
+        series: [
+            {
+                name: '关键词',
+                type: 'bar',
+                data: {{ num.allKeyWordCount }}
+            },
+
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    keyChart.setOption(option);
+</script>
 
 </html>

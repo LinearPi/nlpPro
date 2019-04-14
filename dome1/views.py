@@ -3,6 +3,7 @@ from django.views import View
 from django.core.paginator import Paginator
 import pymongo
 import datetime
+from collections import Counter
 
 
 # Create your views here.
@@ -37,7 +38,8 @@ class Big(View):
     def get(self, request):
         sourceNameList = []
         sourceNameCount = []
-        # allKeyWord = []
+        allKeyWord = []
+        allKeyWordCount = []
 
         client = pymongo.MongoClient(host='localhost', port=27017)
         db = client.PubOpinionMonitoring
@@ -45,7 +47,9 @@ class Big(View):
         ne = collection.find({"emotion": {"$lt": 0.33}}).count()
         po = collection.find({"emotion": {"$gt": 0.66}}).count()
         no = collection.find({"emotion": {"$gte": 0.33, "$lte": 0.66}}).count()
-        total = collection.find().count()
+
+        collecttions = collection.find()
+        total = collecttions.count()
         source = collection.aggregate([{"$group": {"_id": "$source", "count": {"$sum": 1}}}, {"$sort": {"count": -1}}])
         for sou in source:
 
@@ -58,8 +62,17 @@ class Big(View):
             else:
                 sourceNameList.append(sou["_id"])
                 sourceNameCount.append(sou["count"])
-        # sourceNameList = ["a", "v", "d", "e", "w", "sde"]
-        # sourceNameCount = [8, 15, 10, 9, 12, 14]
+        clasifer = ["军事", "经济", "投资", "产经", "汽车", "佛教", "电影", "游戏", "三农", "科技", "文史", "政务"]
+        clasifernum = [180, 130, 80, 40, 200, 28, 150, 207, 273, 87, 253, 80, 94]
+        c = Counter()
+
+        for i in collecttions:
+            for word in i['key_words']:
+                c[word] += 1
+        for (k,v) in c.most_common(40):
+            allKeyWord.append(k)
+            allKeyWordCount.append(v)
+
 
         numy = {"ne": ne,
                 "po": po,
@@ -67,6 +80,10 @@ class Big(View):
                 "total": total,
                 "sourceNameList": sourceNameList,
                 "sourceNameCount": sourceNameCount,
+                "clasifer": clasifer,
+                "clasifernum": clasifernum,
+                "allKeyWord": allKeyWord,
+                "allKeyWordCount": allKeyWordCount,
                 "time": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         return render(request, 'big.html', {"num": numy})
 
