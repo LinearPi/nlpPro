@@ -51,7 +51,7 @@ class Big(View):
         collecttions = collection.find()
         total = collecttions.count()
         source = collection.aggregate([{"$group": {"_id": "$source", "count": {"$sum": 1}}}, {"$sort": {"count": -1}}])
-        for sou in source[:15]:
+        for sou in source:
 
             if sou["_id"] == None:
                 sourceNameList.append("None")
@@ -83,8 +83,8 @@ class Big(View):
                 "po": po,
                 "no": no,
                 "total": total,
-                "sourceNameList": sourceNameList,
-                "sourceNameCount": sourceNameCount,
+                "sourceNameList": sourceNameList[:15],
+                "sourceNameCount": sourceNameCount[:15],
                 "clasifer": clasifer,
                 "clasifernum": clasifernum,
                 "allKeyWord": allKeyWord,
