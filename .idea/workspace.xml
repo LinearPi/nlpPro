@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eb2eb215-be83-4d63-ac43-15ee46417bf6" name="Default Changelist" comment="change setting">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/nlpPro.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dome1/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nlpPro/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nlpPro/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nlpPro/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/css/index1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/js/china.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/js/data-1517645039291-B1vgpymUz.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/js/jquery-1.4.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/js/maps.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/big_page/js/new_file.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/fonts/fontawesome-webfont.eot-" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/fonts/fontawesome-webfont.eot-v=4.4.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/fonts/fontawesome-webfont.svg-v=4.4.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/fonts/fontawesome-webfont.ttf-v=4.4.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/fonts/fontawesome-webfont.woff-v=4.4.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/Font-Awesome/fonts/fontawesome-webfont.woff2-v=4.4.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/account.css-v=4.0.3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/bootstrap-datetimepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/index.css-v=4.0.3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/pagination.css-v=4.0.3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/style.css-v=4.0.3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/css/website.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/fonts/glyphicons-halflings-regular.eot-" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/alerts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/beian.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/bt_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/chose.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/errorImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/g_loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/getdata-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/icheck.blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/icon_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/luntan14-ico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/luntan18-ico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/more.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/more2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/new/09hlzh.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/new/default_wx.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/new/icon-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/nodata-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/notice-ico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/product/star.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/qbcode.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/qbxy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/qqcode.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/ss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/subscr-def.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/successImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/warmingImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/warn-ico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/images/yqgcode.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/' + CONFIG.theme_base_url + '/images/errorImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/' + CONFIG.theme_base_url + '/images/successImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/' + CONFIG.theme_base_url + '/images/warmingImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/Popover requires tooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/bootstrap-datetimepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/bootstrap-datetimepicker.zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/echarts-all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/global.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/gsdata.core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/html5shiv.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/ie-emulation-modes-warning.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/ie-emulation-modes-warning.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/ie8-responsive-file-warning.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/images/delAtc-img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/images/delaccout-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/jquery.jumpto.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/jquery.pagination.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/jquery.placeholder.min.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/jsrender.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/leftmenu/jquery.tinyscrollbar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/leftmenu/website.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingDemo/content.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingDemo/trans.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingDemo/weibo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingDemo/weixin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingMonitor/reports/jquery-ui-1.10.1.custom.min.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingMonitor/reports/jquery.slimscroll.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingMonitor/reports/jquery.tabs.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/modules/yuqingMonitor/reports/scripts.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/moment.min.js-v=4.0.3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/respond.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/sea.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/blue/html/js/site.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/logo.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/pager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/big.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/big_page.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/ini.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlpPro/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlpPro/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../TerncentCal" beforeDir="false" afterPath="$PROJECT_DIR$/../../TerncentCal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../XiguaCity" beforeDir="false" afterPath="$PROJECT_DIR$/../../XiguaCity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../code_file" beforeDir="false" afterPath="$PROJECT_DIR$/../../code_file" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../md_file" beforeDir="false" afterPath="$PROJECT_DIR$/../../md_file" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nlpPro/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nlpPro/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+              <folding>
+                <element signature="e#630#662#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dome1/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <caret line="48" column="86" lean-forward="true" selection-start-line="48" selection-start-column="86" selection-end-line="48" selection-end-column="86" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/big.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="160" column="16" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+              <folding>
+                <element signature="n#script#0;n#html#0;n#!!top" />
+                <element signature="e#4821#4923#0#HTML" />
+                <element signature="e#4945#5631#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ini.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>themes/blue/</find>
+      <find>tppabs=&quot;http://(.*?) &gt;</find>
+      <find>tppabs=&quot;http://(.*?)/&gt;</find>
+      <find>tppabs=&quot;http://(.*?)&gt;</find>
+      <find>src=&quot;../static/(.*?)&quot;</find>
+      <find>hash_code</find>
+      <find>for</find>
+      <find>endfor</find>
+      <find>去世</find>
+      <find>下</find>
+      <find>尾</find>
+      <find>contents</find>
+      <find>2019-</find>
+      <find>of</find>
+      <find>ne</find>
+      <find>刷新</find>
+      <find>内容分</find>
+      <find>./big_page</find>
+      <find>big</find>
+      <find>pieChar</find>
+      <find>prochart</find>
+      <find>pie-chart</find>
+      <find>chart-panel</find>
+      <find>total</find>
+      <find>销量</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>static/blue/</replace>
+      <replace>/&gt;</replace>
+      <replace>&gt;</replace>
+      <replace>href=&quot;{% static '$1' %}&quot;</replace>
+      <replace>src=&quot;{% static '$1' %}&quot;</replace>
+      <replace>/static/big_page</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/static/blue/html/js/sea.js" />
+        <option value="$PROJECT_DIR$/static/pager.css" />
+        <option value="$PROJECT_DIR$/templates/big_page.htm" />
+        <option value="$PROJECT_DIR$/templates/index.htm" />
+        <option value="$PROJECT_DIR$/static/big_page/js/new_file.js" />
+        <option value="$PROJECT_DIR$/nlpPro/urls.py" />
+        <option value="$PROJECT_DIR$/static/big_page/css/index.css" />
+        <option value="$PROJECT_DIR$/templates/ini.html" />
+        <option value="$PROJECT_DIR$/templates/big.html" />
+        <option value="$PROJECT_DIR$/dome1/views.py" />
+        <option value="$PROJECT_DIR$/uwsgi_params" />
+        <option value="$PROJECT_DIR$/uwsgi.ini" />
+        <option value="$PROJECT_DIR$/nlp.conf" />
+        <option value="$PROJECT_DIR$/nlpPro/settings.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="nlpPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nlpPro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nlpPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nlpPro" type="462c0819:PsiDirectoryNode" />
+              <item name="dome1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nlpPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nlpPro" type="462c0819:PsiDirectoryNode" />
+              <item name="nlpPro" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="nlpPro" type="Python.DjangoServer" factoryName="Django server">
+      <module name="nlpPro" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="nlpPro.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb2eb215-be83-4d63-ac43-15ee46417bf6" name="Default Changelist" comment="" />
+      <created>1553916559144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553916559144</updated>
+      <workItem from="1553916563945" duration="7040000" />
+      <workItem from="1554633665283" duration="7298000" />
+      <workItem from="1555155429395" duration="20628000" />
+    </task>
+    <task id="LOCAL-00001" summary="fm">
+      <created>1555262180474</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555262180474</updated>
+    </task>
+    <task id="LOCAL-00002" summary="T2F">
+      <created>1555263442169</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555263442169</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add_uwsgi">
+      <created>1555263589181</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555263589181</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="34966000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1602289" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32289156" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32891566" />
+      <window_info anchor="bottom" id="File Transfer" order="13" visible="true" weight="0.32891566" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1602289" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32289156" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32891566" />
+      <window_info anchor="bottom" id="File Transfer" order="13" visible="true" weight="0.32891566" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fm" />
+    <MESSAGE value="T2F" />
+    <MESSAGE value="Add_uwsgi" />
+    <MESSAGE value="change setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="change setting" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dome1/views.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/static/blue/html/js/sea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/pager.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/blue/html/js/gsdata.core.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/js/maps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/js/jquery-1.4.4.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/js/data-1517645039291-B1vgpymUz.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/big_page.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#canvas#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/js/new_file.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="42" column="21" lean-forward="true" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15900">
+          <caret line="2017" selection-start-line="2017" selection-end-line="2017" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/js/echarts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="19523" column="63" selection-start-line="19523" selection-start-column="54" selection-end-line="19523" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/crawler/lib/python3.6/site-packages/django/core/handlers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="157" selection-start-line="157" selection-end-line="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/crawler/lib/python3.6/site-packages/django/utils/deprecation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/crawler/lib/python3.6/site-packages/django/core/handlers/exception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/crawler/lib/python3.6/site-packages/django/views/generic/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/big.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="160" column="16" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+          <folding>
+            <element signature="n#script#0;n#html#0;n#!!top" />
+            <element signature="e#4821#4923#0#HTML" />
+            <element signature="e#4945#5631#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nlp.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="18" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uwsgi.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uwsgi_params">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="52" lean-forward="true" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dome1/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="48" column="86" lean-forward="true" selection-start-line="48" selection-start-column="86" selection-end-line="48" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nlpPro/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding>
+            <element signature="e#630#662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/big_page/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ini.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nlpPro/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
