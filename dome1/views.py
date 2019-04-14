@@ -51,7 +51,7 @@ class Big(View):
         collecttions = collection.find()
         total = collecttions.count()
         source = collection.aggregate([{"$group": {"_id": "$source", "count": {"$sum": 1}}}, {"$sort": {"count": -1}}])
-        for sou in source:
+        for sou in source[:15]:
 
             if sou["_id"] == None:
                 sourceNameList.append("None")
@@ -63,7 +63,7 @@ class Big(View):
                 sourceNameList.append(sou["_id"])
                 sourceNameCount.append(sou["count"])
         clasifer = ["军事", "经济", "投资", "产经", "汽车", "佛教", "电影", "游戏", "三农", "科技", "文史", "政务"]
-        clasifernum = [180, 130, 80, 40, 200, 28, 150, 207, 273, 87, 253, 80, 94]
+        clasifernum = [180, 130, 80, 40, 202, 78, 153, 207, 273, 87, 253, 80, 94]
 
         allKeyWord = ["经济", "发展", "用户", "旅游", "健康", "马克思主义", "理论", "创新", "时尚", "AWE", "智慧", "热水器", "基层", "网络", "食品",
                       "食品安全", "涉事", "产品", "雪龙", "南极", "考古", "夜间", "游客", "消费", "夜游", "体验", "文化", "生态", "平台", "观众", "烟草",
