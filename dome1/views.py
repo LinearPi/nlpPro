@@ -38,8 +38,8 @@ class Big(View):
     def get(self, request):
         sourceNameList = []
         sourceNameCount = []
-        allKeyWord = []
-        allKeyWordCount = []
+        # allKeyWord = []
+        # allKeyWordCount = []
 
         client = pymongo.MongoClient(host='localhost', port=27017)
         db = client.PubOpinionMonitoring
@@ -65,14 +65,19 @@ class Big(View):
         clasifer = ["军事", "经济", "投资", "产经", "汽车", "佛教", "电影", "游戏", "三农", "科技", "文史", "政务"]
         clasifernum = [180, 130, 80, 40, 200, 28, 150, 207, 273, 87, 253, 80, 94]
 
-        c = Counter()
-        for i in collecttions:
-            if i["key_words"]:
-                for word in i["key_words"]:
-                    c[word] += 1
-        for (k, v) in c.most_common(40):
-            allKeyWord.append(k)
-            allKeyWordCount.append(v)
+        allKeyWord = ["经济", "发展", "用户", "旅游", "健康", "马克思主义", "理论", "创新", "时尚", "AWE", "智慧", "热水器", "基层", "网络", "食品",
+                      "食品安全", "涉事", "产品", "雪龙", "南极", "考古", "夜间", "游客", "消费", "夜游", "体验", "文化", "生态", "平台", "观众", "烟草",
+                      "税价"]
+        allKeyWordCount = [56, 53, 50, 47, 47, 43, 40, 40, 38, 36, 35, 33, 31, 30, 30, 28, 27, 26, 26, 25, 23, 22, 21,
+                           21, 19, 18, 17, 17, 16, 15, 15, 14, 14, 14, 14, 13]
+        # c = Counter()
+        # for i in collecttions:
+        #     if i["key_words"]:
+        #         for word in i["key_words"]:
+        #             c[word] += 1
+        # for (k, v) in c.most_common(40):
+        #     allKeyWord.append(k)
+        #     allKeyWordCount.append(v)
 
         numy = {"ne": ne,
                 "po": po,
